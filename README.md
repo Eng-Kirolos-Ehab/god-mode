@@ -259,6 +259,7 @@ god-mode/
 ├── tools/token_stats.py     # build stats from an OpenWolf ledger
 ├── stats/token-stats.json
 ├── EXTERNAL_SKILLS.md
+├── CHANGELOG.md
 └── install.sh / install.ps1 # manual install
 ```
 
