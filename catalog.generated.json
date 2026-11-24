@@ -1,8 +1,8 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "marketplace": "god-mode",
   "core": {
-    "bytes": 20146,
+    "bytes": 20047,
     "size": "20 KB"
   },
   "openwolf": {
@@ -98,11 +98,10 @@
       "id": "gm-seo-writing",
       "name": "SEO & Writing",
       "emoji": "📈",
-      "description": "Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.",
+      "description": "Get found on Google and in AI answers, and make AI-sounding text read like a person wrote it.",
       "extras": null,
       "skills": [
-        "humanizer",
-        "saudi-news-curator"
+        "humanizer"
       ],
       "agents": [
         "seo-ai-visibility"
@@ -123,18 +122,10 @@
           "get": "The same text with AI tells removed and every fact kept",
           "asks": "nothing beyond the text",
           "path": "plugins/gm-seo-writing/skills/humanizer"
-        },
-        {
-          "name": "saudi-news-curator",
-          "type": "skill",
-          "say": "هات تريند السعودية النهارده and write an SEO article",
-          "get": "A verified Arabic + English article with SEO title, meta and hashtags",
-          "asks": "your site URL (once) and the topic or section",
-          "path": "plugins/gm-seo-writing/skills/saudi-news-curator"
         }
       ],
-      "bytes": 47287,
-      "size": "46 KB"
+      "bytes": 35489,
+      "size": "35 KB"
     },
     {
       "id": "gm-video",

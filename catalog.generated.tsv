@@ -1,7 +1,7 @@
-#meta	2.0.0	20146	20 KB	2.5.3
+#meta	2.0.1	20047	20 KB	2.5.3
 gm-web-design	Web & Design	52 KB	53121	Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone.	
 gm-qa-audit	QA & Audit	4.3 KB	4413	Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.	
-gm-seo-writing	SEO & Writing	46 KB	47287	Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.	
+gm-seo-writing	SEO & Writing	35 KB	35489	Get found on Google and in AI answers, and make AI-sounding text read like a person wrote it.	
 gm-video	Video & Marketing	2.7 KB	2756	Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it.	Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.
 gm-career	Career	28 KB	29036	Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them.	
 gm-automation	Automation & Agents	11 KB	11466	Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.	
