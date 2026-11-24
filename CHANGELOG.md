@@ -7,6 +7,7 @@
 - First-run setup (`/god-mode:setup`): Claude asks which categories you want (multi-select, with a description and download size for each), installs only those, and lets you change them later. A removal always needs a yes.
 - OpenWolf is set up automatically (pinned to 2.5.3). During setup it runs in the current git project, and the session hook reminds Claude to set it up in new git projects. Your existing CLAUDE.md and `.claude/settings.json` are kept.
 - One session-start hook in the core. It only prints a note for Claude. It doesn't download or change anything itself.
+- **`npx kermione@godmode`:** the shortest install, on any OS with Node 18+. It has an interactive multi-select menu (arrows, space, enter) showing the description and size of each category. Source in `npm/kermione`, no dependencies.
 - **One-line install:** `curl -fsSL https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.sh | bash` (or `irm .../get.ps1 | iex` on Windows) adds the marketplace, installs the core, shows the category menu, installs your picks, and sets up OpenWolf. Re-running it adds categories and keeps the ones you had.
 - The manual installers (`install.sh`, `install.ps1`) show the same category menu, and also take `--categories` / `--all` / `--no-openwolf`.
 - `categories.json` is the single source of truth. `tools/build_catalog.py` regenerates the plugin manifests, the marketplace, the sizes, the setup table and the README tables, and fails if a category's list doesn't match its files.
