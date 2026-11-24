@@ -1,0 +1,10 @@
+{
+  "name": "god-mode",
+  "version": "1.0.0",
+  "description": "One router skill + 8 skills + 9 specialist agents + standing rules + a token-saving protocol for Claude Code.",
+  "author": { "name": "Kirolos Ehab", "url": "https://github.com/Eng-Kirolos-Ehab" },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT",
+  "keywords": ["skills", "agents", "router", "token-saving", "productivity", "arabic"]
+}

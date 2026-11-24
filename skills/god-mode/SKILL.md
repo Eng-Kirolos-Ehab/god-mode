@@ -1,0 +1,63 @@
+---
+name: god-mode
+description: Master skill that routes any request to the right specialist skill or agent in the God Mode collection, applies a set of battle-tested working rules, and runs a token-saving work protocol. Use at the start of any non-trivial task, when unsure which skill fits, or when the user says "god mode".
+argument-hint: "[task in any language]"
+license: MIT
+---
+
+# God Mode
+
+One entry point for every skill and agent in this collection. Read this file first, then load **only** the skill or agent the task needs. Never load them all.
+
+## 1. Route the task
+
+Match the request to one row. When two rows fit, pick the more specific one. If nothing fits, do the task directly without forcing a skill.
+
+| Domain | The request looks like | Use |
+|---|---|---|
+| Web clone | "copy this site", rebuild a site in Next.js | skill `clone-website` |
+| Recolor | swap a palette across an existing codebase | skill `color-palette-swap` |
+| UI colors | pick or check a palette, contrast, shades | `rules/design-color-rules.md` |
+| Interior design | room layout, furniture, BOQ, mood board | skill `interior-design-engineer` |
+| Writing | text sounds like AI, polish prose | skill `humanizer` |
+| Careers | CV, LinkedIn, ATS, interview prep, cover letter | skill `cv-optimizer`, agent `job-hunter` |
+| Accounts | sign in or sign up on job sites | agent `accounts-keeper` |
+| Study | lecture PDF to a designed summary PDF | skill `lecture-summary-pdf` |
+| News | Saudi or Gulf news, bilingual SEO article | skill `saudi-news-curator` |
+| Data from sites | get data through a site's own requests | skill `api-anything` |
+| Mobile QA | test an app before a store build | agent `mobile-app-qa` |
+| Web audit | site stuck loading, CORS, 500s, slow | agent `web-auditor` |
+| SEO | indexing, AI crawlers, structured data | agent `seo-ai-visibility` |
+| Video/marketing | promo film, trailer, launch copy | agent `promo-film-maker` |
+| Dashboards | review an admin, analytics or smart-home dashboard | agent `dashboard-reviewer` |
+| Mobile web review | phone-width review of a site or portfolio | agent `mobile-ui-reviewer` |
+| Many specialists | broad task, "someone handle this" | agent `office-manager` |
+
+Recommended extras (installed separately; see EXTERNAL_SKILLS.md in the repo): `ui-ux-pro-max` for UI design, `career-ops` for job tracking, Anthropic's `docx`/`xlsx`/`pptx`/`pdf` for office files.
+
+## 2. Token-saving protocol
+
+1. **Index before reading.** If the project keeps a file index (e.g. `.wolf/anatomy.md`, a README map), check it first. If the description answers the question, don't open the file.
+2. **No repeated reads.** Don't re-read a file that hasn't changed this session.
+3. **Targeted search.** Grep for the exact symbol and read only that line range of big files.
+4. **Parallel calls.** Send independent tool calls in one message.
+5. **Few subagents.** Spawn them only for wide searches or when asked. Each one starts cold.
+6. **Media stays in scripts.** Handle photos, PDFs and video frames with code. Never paste base64 or huge output into context.
+7. **Known fixes first.** If the project keeps a bug log, check it before debugging.
+
+## 3. Learn every session
+
+- User correction → record it as a rule with the date and the reason (in the project's CLAUDE.md or notes file).
+- Bug fixed → log the error, root cause, fix and tags.
+- Files created or renamed → update the project index.
+
+Read `rules/standing-rules.md` once per session before the first change.
+
+## 4. Safety lines (never cross)
+
+- **No deletes** of the user's files, data or rows without written permission in chat.
+- **No sending** emails or messages on the user's behalf unless asked for that specific one. Leave drafts instead.
+- **No real-world side effects while testing:** no real orders, payments or deliveries on live systems. Use a test environment.
+- **No secrets** in output, commits, or requests to outside services.
+- **Back up before any production write**, and write down the rollback.
+- **Check the live state** (git remote, deployed version, DB value) before changing it. Don't trust memory.

@@ -1,0 +1,55 @@
+{
+  "tokens_used": 159076194,
+  "tokens_saved_estimate": 286728330,
+  "without_protocol_estimate": 445804524,
+  "reduction_pct": 64.3,
+  "work_sessions": 724,
+  "file_reads": 48624,
+  "file_writes": 71861,
+  "repeated_reads_blocked": 28888,
+  "index_hit_rate_pct": 42.3,
+  "by_month": {
+    "2026-05": {
+      "sessions": 268,
+      "repeated_reads_blocked": 1382,
+      "input_tokens": 3845984,
+      "output_tokens": 2992068
+    },
+    "2026-06": {
+      "sessions": 580,
+      "repeated_reads_blocked": 4861,
+      "input_tokens": 27400759,
+      "output_tokens": 2699889
+    },
+    "2026-07": {
+      "sessions": 654,
+      "repeated_reads_blocked": 11469,
+      "input_tokens": 37563309,
+      "output_tokens": 10459682
+    },
+    "2026-08": {
+      "sessions": 618,
+      "repeated_reads_blocked": 4945,
+      "input_tokens": 29744337,
+      "output_tokens": 5313261
+    },
+    "2026-09": {
+      "sessions": 187,
+      "repeated_reads_blocked": 659,
+      "input_tokens": 2473237,
+      "output_tokens": 1576885
+    },
+    "2026-10": {
+      "sessions": 614,
+      "repeated_reads_blocked": 723,
+      "input_tokens": 4010594,
+      "output_tokens": 11639005
+    },
+    "2026-11": {
+      "sessions": 851,
+      "repeated_reads_blocked": 4849,
+      "input_tokens": 9422008,
+      "output_tokens": 9935176
+    }
+  }
+}
