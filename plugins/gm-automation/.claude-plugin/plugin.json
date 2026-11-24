@@ -1,0 +1,12 @@
+{
+  "name": "gm-automation",
+  "version": "2.0.0",
+  "description": "God Mode · Automation & Agents: Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists.",
+  "author": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT"
+}

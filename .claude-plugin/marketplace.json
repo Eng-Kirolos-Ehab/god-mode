@@ -1,13 +1,83 @@
 {
   "name": "god-mode",
-  "owner": { "name": "Kirolos Ehab", "url": "https://github.com/Eng-Kirolos-Ehab" },
-  "metadata": { "description": "God Mode skill collection for Claude Code", "version": "1.1.0" },
+  "owner": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "metadata": {
+    "description": "God Mode skill collection for Claude Code",
+    "version": "2.0.0"
+  },
   "plugins": [
     {
       "name": "god-mode",
-      "source": "./",
-      "description": "One router skill + 8 skills + 9 specialist agents + standing rules + a token-saving protocol.",
-      "version": "1.1.0",
+      "source": "./plugins/god-mode",
+      "description": "Core: router, rules, token protocol, first-run category picker. Install this one.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-web-design",
+      "source": "./plugins/gm-web-design",
+      "description": "Web & Design: Clone a website into Next.js, swap a color palette across a codebase, and two reviewers for phone-width pages and dashboards.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-qa-audit",
+      "source": "./plugins/gm-qa-audit",
+      "description": "QA & Audit: Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes).",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-seo-writing",
+      "source": "./plugins/gm-seo-writing",
+      "description": "SEO & Writing: SEO and AI-crawler visibility audits, rewrite text that sounds like AI, and bilingual Arabic/English news articles.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-video",
+      "source": "./plugins/gm-video",
+      "description": "Video & Marketing: Promo films, trailers, shorts and captions with launch copy. Picks the right video tool for each job.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-career",
+      "source": "./plugins/gm-career",
+      "description": "Career: CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-automation",
+      "source": "./plugins/gm-automation",
+      "description": "Automation & Agents: Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-study",
+      "source": "./plugins/gm-study",
+      "description": "Study: Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-interior",
+      "source": "./plugins/gm-interior",
+      "description": "Interior Design: Room layouts, furniture plans, bills of quantities and mood boards.",
+      "version": "2.0.0",
       "license": "MIT",
       "category": "productivity"
     }

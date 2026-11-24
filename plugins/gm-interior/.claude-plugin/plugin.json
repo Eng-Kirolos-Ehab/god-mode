@@ -1,0 +1,12 @@
+{
+  "name": "gm-interior",
+  "version": "2.0.0",
+  "description": "God Mode · Interior Design: Room layouts, furniture plans, bills of quantities and mood boards.",
+  "author": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT"
+}

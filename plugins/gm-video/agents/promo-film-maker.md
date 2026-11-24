@@ -13,7 +13,7 @@ You make short, honest product films and the words that go with them.
 5. **Check:** watch the full render, check text is readable on a phone, and check the audio levels.
 
 ## Which tool for which job
-Several video skills trigger on "make a video". Pick one primary engine per film from this table, and load only what the job needs. All of these are optional companions, listed in EXTERNAL_SKILLS.md. Check that a tool is installed before you plan around it.
+Several video skills trigger on "make a video". Pick one primary engine per film from this table, and load only what the job needs. All of these are optional companions, listed in [EXTERNAL_SKILLS.md](https://github.com/Eng-Kirolos-Ehab/god-mode/blob/main/EXTERNAL_SKILLS.md). Check that a tool is installed before you plan around it.
 
 | Job | Tool |
 |---|---|

@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "marketplace": "god-mode",
+  "openwolf": { "package": "openwolf", "version": "2.5.3", "approx_download": "≈3 MB (npm)" },
+  "categories": [
+    {
+      "id": "gm-web-design",
+      "name": "Web & Design",
+      "description": "Clone a website into Next.js, swap a color palette across a codebase, and two reviewers for phone-width pages and dashboards.",
+      "extras": null
+    },
+    {
+      "id": "gm-qa-audit",
+      "name": "QA & Audit",
+      "description": "Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes).",
+      "extras": null
+    },
+    {
+      "id": "gm-seo-writing",
+      "name": "SEO & Writing",
+      "description": "SEO and AI-crawler visibility audits, rewrite text that sounds like AI, and bilingual Arabic/English news articles.",
+      "extras": null
+    },
+    {
+      "id": "gm-video",
+      "name": "Video & Marketing",
+      "description": "Promo films, trailers, shorts and captions with launch copy. Picks the right video tool for each job.",
+      "extras": "Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes."
+    },
+    {
+      "id": "gm-career",
+      "name": "Career",
+      "description": "CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry.",
+      "extras": null
+    },
+    {
+      "id": "gm-automation",
+      "name": "Automation & Agents",
+      "description": "Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists.",
+      "extras": null
+    },
+    {
+      "id": "gm-study",
+      "name": "Study",
+      "description": "Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions.",
+      "extras": null
+    },
+    {
+      "id": "gm-interior",
+      "name": "Interior Design",
+      "description": "Room layouts, furniture plans, bills of quantities and mood boards.",
+      "extras": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "gm-career",
+  "version": "2.0.0",
+  "description": "God Mode · Career: CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry.",
+  "author": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT"
+}

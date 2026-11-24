@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.0
+
+**Pick what you install**
+- God Mode is now a small core plugin (`god-mode`: router, rules, token protocol, setup) plus 8 optional category plugins in the same marketplace: `gm-web-design`, `gm-qa-audit`, `gm-seo-writing`, `gm-video`, `gm-career`, `gm-automation`, `gm-study`, `gm-interior`.
+- First-run setup (`/god-mode:setup`): Claude asks which categories you want (multi-select, with a description and download size for each), installs only those, and lets you change them later. A removal always needs a yes.
+- OpenWolf is set up automatically (pinned to 2.5.3). During setup it runs in the current git project, and the session hook reminds Claude to set it up in new git projects. Your existing CLAUDE.md and `.claude/settings.json` are kept.
+- One session-start hook in the core. It only prints a note for Claude. It doesn't download or change anything itself.
+- The manual installers (`install.sh`, `install.ps1`) show the same category menu, and also take `--categories` / `--all` / `--no-openwolf`.
+- `categories.json` is the single source of truth. `tools/build_catalog.py` regenerates the plugin manifests, the marketplace, the sizes and the setup table.
+
+**Upgrading from 1.x:** updating `god-mode@god-mode` now gives you the core only. Your next session asks which categories to add back. Pick the ones you used.
+
 ## 1.1.0
 
 **promo-film-maker**

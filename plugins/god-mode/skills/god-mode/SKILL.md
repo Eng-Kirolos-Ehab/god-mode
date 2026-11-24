@@ -13,27 +13,30 @@ One entry point for every skill and agent in this collection. Read this file fir
 
 Match the request to one row. When two rows fit, pick the more specific one. If nothing fits, do the task directly without forcing a skill.
 
+Skills and agents ship in optional categories (the plugin id is in brackets). If the one you need isn't installed, say which category holds it and suggest `/god-mode:setup` to add it. Then do the task as well as you can without it.
+
 | Domain | The request looks like | Use |
 |---|---|---|
-| Web clone | "copy this site", rebuild a site in Next.js | skill `clone-website` |
-| Recolor | swap a palette across an existing codebase | skill `color-palette-swap` |
-| UI colors | pick or check a palette, contrast, shades | `rules/design-color-rules.md` |
-| Interior design | room layout, furniture, BOQ, mood board | skill `interior-design-engineer` |
-| Writing | text sounds like AI, polish prose | skill `humanizer` |
-| Careers | CV, LinkedIn, ATS, interview prep, cover letter | skill `cv-optimizer`, agent `job-hunter` |
-| Accounts | sign in or sign up on job sites | agent `accounts-keeper` |
-| Study | lecture PDF to a designed summary PDF | skill `lecture-summary-pdf` |
-| News | Saudi or Gulf news, bilingual SEO article | skill `saudi-news-curator` |
-| Data from sites | get data through a site's own requests | skill `api-anything` |
-| Mobile QA | test an app before a store build | agent `mobile-app-qa` |
-| Web audit | site stuck loading, CORS, 500s, slow | agent `web-auditor` |
-| SEO | indexing, AI crawlers, structured data | agent `seo-ai-visibility` |
-| Video/marketing | promo film, trailer, edit my footage, shorts, captions, launch copy | agent `promo-film-maker` (it picks the right video tool) |
-| Dashboards | review an admin, analytics or smart-home dashboard | agent `dashboard-reviewer` |
-| Mobile web review | phone-width review of a site or portfolio | agent `mobile-ui-reviewer` |
-| Many specialists | broad task, "someone handle this" | agent `office-manager` |
+| Web clone | "copy this site", rebuild a site in Next.js | skill `clone-website` [gm-web-design] |
+| Recolor | swap a palette across an existing codebase | skill `color-palette-swap` [gm-web-design] |
+| UI colors | pick or check a palette, contrast, shades | `rules/design-color-rules.md` (core) |
+| Interior design | room layout, furniture, BOQ, mood board | skill `interior-design-engineer` [gm-interior] |
+| Writing | text sounds like AI, polish prose | skill `humanizer` [gm-seo-writing] |
+| Careers | CV, LinkedIn, ATS, interview prep, cover letter | skill `cv-optimizer`, agent `job-hunter` [gm-career] |
+| Accounts | sign in or sign up on job sites | agent `accounts-keeper` [gm-career] |
+| Study | lecture PDF to a designed summary PDF | skill `lecture-summary-pdf` [gm-study] |
+| News | Saudi or Gulf news, bilingual SEO article | skill `saudi-news-curator` [gm-seo-writing] |
+| Data from sites | get data through a site's own requests | skill `api-anything` [gm-automation] |
+| Mobile QA | test an app before a store build | agent `mobile-app-qa` [gm-qa-audit] |
+| Web audit | site stuck loading, CORS, 500s, slow | agent `web-auditor` [gm-qa-audit] |
+| SEO | indexing, AI crawlers, structured data | agent `seo-ai-visibility` [gm-seo-writing] |
+| Video/marketing | promo film, trailer, edit my footage, shorts, captions, launch copy | agent `promo-film-maker` (it picks the right video tool) [gm-video] |
+| Dashboards | review an admin, analytics or smart-home dashboard | agent `dashboard-reviewer` [gm-web-design] |
+| Mobile web review | phone-width review of a site or portfolio | agent `mobile-ui-reviewer` [gm-web-design] |
+| God Mode itself | add or remove categories, first-run setup | skill `setup` (core) |
+| Many specialists | broad task, "someone handle this" | agent `office-manager` [gm-automation] |
 
-Recommended extras (installed separately; see EXTERNAL_SKILLS.md in the repo): `ui-ux-pro-max` for UI design, `career-ops` for job tracking, Anthropic's `docx`/`xlsx`/`pptx`/`pdf` for office files.
+Recommended extras (installed separately; see [EXTERNAL_SKILLS.md](https://github.com/Eng-Kirolos-Ehab/god-mode/blob/main/EXTERNAL_SKILLS.md)): `ui-ux-pro-max` for UI design, `career-ops` for job tracking, Anthropic's `docx`/`xlsx`/`pptx`/`pdf` for office files.
 
 ## 2. Token-saving protocol
 

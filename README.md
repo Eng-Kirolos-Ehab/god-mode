@@ -35,7 +35,24 @@ Or just send this to your Claude:
 
 > Install the God Mode plugin from https://github.com/Eng-Kirolos-Ehab/god-mode
 
-Then restart Claude Code and type `/god-mode <your task>`, or simply describe the task.
+Then restart Claude Code. **In your first session, God Mode asks which categories you want** (multi-select, with a description and download size for each) and installs only those. It also sets up [OpenWolf](https://www.npmjs.com/package/openwolf) in your project automatically. Change your picks any time with `/god-mode:setup`.
+
+### Categories
+
+The core (19 KB) is always installed: router, standing rules, token protocol and setup. Everything else is optional:
+
+| # | Category | Plugin id | Size | What you get |
+|---|---|---|---|---|
+| 1 | **Web & Design** | `gm-web-design` | 51 KB | Clone a website into Next.js, swap a color palette across a codebase, and two reviewers for phone-width pages and dashboards. |
+| 2 | **QA & Audit** | `gm-qa-audit` | 3.5 KB | Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes). |
+| 3 | **SEO & Writing** | `gm-seo-writing` | 46 KB | SEO and AI-crawler visibility audits, rewrite text that sounds like AI, and bilingual Arabic/English news articles. |
+| 4 | **Video & Marketing** | `gm-video` | 2.7 KB | Promo films, trailers, shorts and captions with launch copy. Picks the right video tool for each job. *Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.* |
+| 5 | **Career** | `gm-career` | 28 KB | CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry. |
+| 6 | **Automation & Agents** | `gm-automation` | 11 KB | Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists. |
+| 7 | **Study** | `gm-study` | 5.3 KB | Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions. |
+| 8 | **Interior Design** | `gm-interior` | 13 KB | Room layouts, furniture plans, bills of quantities and mood boards. |
+
+You can also install a category directly: `/plugin install gm-career@god-mode`.
 
 <details>
 <summary>Manual install (copy files instead of using the plugin)</summary>
@@ -43,13 +60,13 @@ Then restart Claude Code and type `/god-mode <your task>`, or simply describe th
 ```bash
 git clone https://github.com/Eng-Kirolos-Ehab/god-mode.git
 cd god-mode
-./install.sh          # macOS / Linux / Git Bash
-pwsh ./install.ps1    # Windows PowerShell
+./install.sh          # macOS / Linux / Git Bash: shows the category menu
+pwsh ./install.ps1    # Windows PowerShell: shows the category menu
 ```
-Existing skills or agents with the same name are skipped unless you pass `--force` / `-Force`.
+Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm-video`, or install everything with `--all` / `-All`. Existing skills or agents with the same name are skipped unless you pass `--force` / `-Force`. Run it from your project folder to set up OpenWolf there, or pass `--no-openwolf` / `-NoOpenWolf` to skip it.
 </details>
 
-**Safe by design:** the plugin contains only Markdown instructions and a few small Python helper scripts. It has no hooks, no MCP servers, no network calls of its own and no access to any account. Uninstall any time with `/plugin uninstall god-mode`.
+**What it runs on your machine:** the plugins are Markdown instructions and a few small Python helper scripts, with no MCP servers and no access to any account. The core adds **one session-start hook** ([`session-start.sh`](plugins/god-mode/hooks/session-start.sh)). It only prints a note for Claude: "setup pending", or "OpenWolf not set up in this git project". It downloads and changes nothing by itself. During setup, Claude runs `claude plugin install` for the categories you pick and `npx openwolf@2.5.3 init --agent claude` (pinned version; it keeps your existing CLAUDE.md and settings). Uninstall any time with `/plugin uninstall god-mode` and the `gm-*` plugins.
 
 ---
 
@@ -61,6 +78,8 @@ Existing skills or agents with the same name are skipped unless you pass `--forc
 ```
 /plugin install god-mode --marketplace Eng-Kirolos-Ehab/god-mode
 ```
+
+**أول ما تفتح جلسة بعد التثبيت**، God Mode هيسألك عايز أنهي أقسام (تقدر تختار أكتر من قسم)، ومعاها وصف كل قسم وحجم تحميله، وينزّل اللي اخترته بس. وكمان بيسطّب **OpenWolf** في المشروع لوحده. تقدر تغيّر اختياراتك في أي وقت بـ `/god-mode:setup`.
 
 - **موزّع ذكي:** بيقرأ طلبك ويختار المهارة أو الوكيل المناسب بس، من غير ما يحمّل كل حاجة.
 - **قواعد ثابتة:** كل قاعدة جت من تصحيح أو مشكلة حصلت فعلًا في الشغل.
@@ -74,12 +93,13 @@ Existing skills or agents with the same name are skipped unless you pass `--forc
 | | Feature | What it does |
 |---|---|---|
 | 🧭 | **Router** | Maps a request to the one skill or agent that fits, so only that one loads. |
-| 📏 | **Standing rules** | 20+ rules, each from a real correction or incident ([standing-rules.md](skills/god-mode/rules/standing-rules.md)). |
+| 📏 | **Standing rules** | 20+ rules, each from a real correction or incident ([standing-rules.md](plugins/god-mode/skills/god-mode/rules/standing-rules.md)). |
 | 💰 | **Token protocol** | Index-first reading, no repeated reads, targeted search. About 64% fewer tokens. |
 | 🧠 | **Learning loop** | Corrections become rules and fixed bugs go to a log, so mistakes aren't repeated. |
 | 🛡️ | **Safety lines** | No deletes without written OK, messages stay drafts, no live side effects while testing, backup before production writes. |
+| 🧩 | **Pick what you need** | 8 optional categories with sizes. First-run picker, change any time with `/god-mode:setup`. |
 | 🤖 | **9 specialist agents** | Mobile QA, web auditor, SEO + AI visibility, promo films, job hunter, accounts keeper, two reviewers, office manager. |
-| 🎨 | **Design rules** | Color harmonies, 60-30-10, OKLCH shade scales, WCAG contrast ([design-color-rules.md](skills/god-mode/rules/design-color-rules.md)). |
+| 🎨 | **Design rules** | Color harmonies, 60-30-10, OKLCH shade scales, WCAG contrast ([design-color-rules.md](plugins/god-mode/skills/god-mode/rules/design-color-rules.md)). |
 | 🌍 | **Arabic + English** | Skills and triggers work in both languages. |
 
 ---
@@ -149,7 +169,7 @@ flowchart LR
     K -.next session.-> B
 ```
 
-1. **Route.** Pick one row from the router table in [`skills/god-mode/SKILL.md`](skills/god-mode/SKILL.md).
+1. **Route.** Pick one row from the router table in [`plugins/god-mode/skills/god-mode/SKILL.md`](plugins/god-mode/skills/god-mode/SKILL.md).
 2. **Rules.** Load the standing rules once per session.
 3. **Work cheaply.** Index first, targeted search, parallel tool calls, no repeated reads.
 4. **Verify.** Check the live state (git remote, deployed version, DB value) before changing anything.
@@ -195,11 +215,11 @@ mindmap
 
 | Name | Type | Use it for |
 |---|---|---|
-| [clone-website](skills/clone-website) | skill | Rebuild an existing site section by section (assets, CSS, content) in Next.js |
-| [color-palette-swap](skills/color-palette-swap) | skill | Swap a color palette across a whole codebase safely |
-| [design-color-rules](skills/god-mode/rules/design-color-rules.md) | rules | Harmonies, 60-30-10, OKLCH scales, contrast |
-| [mobile-ui-reviewer](agents/mobile-ui-reviewer.md) | agent | Phone-width review: layout, touch, type, contrast, motion, speed |
-| [dashboard-reviewer](agents/dashboard-reviewer.md) | agent | Critical review of admin, analytics or smart-home dashboards |
+| [clone-website](plugins/gm-web-design/skills/clone-website) | skill | Rebuild an existing site section by section (assets, CSS, content) in Next.js |
+| [color-palette-swap](plugins/gm-web-design/skills/color-palette-swap) | skill | Swap a color palette across a whole codebase safely |
+| [design-color-rules](plugins/god-mode/skills/god-mode/rules/design-color-rules.md) | rules | Harmonies, 60-30-10, OKLCH scales, contrast |
+| [mobile-ui-reviewer](plugins/gm-web-design/agents/mobile-ui-reviewer.md) | agent | Phone-width review: layout, touch, type, contrast, motion, speed |
+| [dashboard-reviewer](plugins/gm-web-design/agents/dashboard-reviewer.md) | agent | Critical review of admin, analytics or smart-home dashboards |
 </details>
 
 <details>
@@ -207,9 +227,9 @@ mindmap
 
 | Name | Type | Use it for |
 |---|---|---|
-| [mobile-app-qa](agents/mobile-app-qa.md) | agent | App QA on Android/iOS, misuse scenarios, GO/NO-GO bug reports |
-| [web-auditor](agents/web-auditor.md) | agent | Stuck loaders, CORS, 500s, slow pages, fixed with backup + rollback |
-| [api-anything](skills/api-anything) | skill (MIT) | Get data from a site through its own requests |
+| [mobile-app-qa](plugins/gm-qa-audit/agents/mobile-app-qa.md) | agent | App QA on Android/iOS, misuse scenarios, GO/NO-GO bug reports |
+| [web-auditor](plugins/gm-qa-audit/agents/web-auditor.md) | agent | Stuck loaders, CORS, 500s, slow pages, fixed with backup + rollback |
+| [api-anything](plugins/gm-automation/skills/api-anything) | skill (MIT) | Get data from a site through its own requests |
 </details>
 
 <details>
@@ -217,10 +237,10 @@ mindmap
 
 | Name | Type | Use it for |
 |---|---|---|
-| [seo-ai-visibility](agents/seo-ai-visibility.md) | agent | SEO + AI-crawler visibility: robots, llms.txt, schema, hreflang |
-| [promo-film-maker](agents/promo-film-maker.md) | agent | Promo films made in code + launch copy |
-| [humanizer](skills/humanizer) | skill (MIT) | Remove AI tells from writing |
-| [saudi-news-curator](skills/saudi-news-curator) | skill | Verified bilingual Saudi/Gulf news articles with SEO and hashtags |
+| [seo-ai-visibility](plugins/gm-seo-writing/agents/seo-ai-visibility.md) | agent | SEO + AI-crawler visibility: robots, llms.txt, schema, hreflang |
+| [promo-film-maker](plugins/gm-video/agents/promo-film-maker.md) | agent | Promo films made in code + launch copy |
+| [humanizer](plugins/gm-seo-writing/skills/humanizer) | skill (MIT) | Remove AI tells from writing |
+| [saudi-news-curator](plugins/gm-seo-writing/skills/saudi-news-curator) | skill | Verified bilingual Saudi/Gulf news articles with SEO and hashtags |
 </details>
 
 <details>
@@ -228,9 +248,9 @@ mindmap
 
 | Name | Type | Use it for |
 |---|---|---|
-| [cv-optimizer](skills/cv-optimizer) | skill | CV + LinkedIn analysis, ATS, interview prep (Arabic + English) |
-| [job-hunter](agents/job-hunter.md) | agent | Find jobs, honest fit check, tailored CV + researched company note |
-| [accounts-keeper](agents/accounts-keeper.md) | agent | Job-site accounts registry. Never touches passwords |
+| [cv-optimizer](plugins/gm-career/skills/cv-optimizer) | skill | CV + LinkedIn analysis, ATS, interview prep (Arabic + English) |
+| [job-hunter](plugins/gm-career/agents/job-hunter.md) | agent | Find jobs, honest fit check, tailored CV + researched company note |
+| [accounts-keeper](plugins/gm-career/agents/accounts-keeper.md) | agent | Job-site accounts registry. Never touches passwords |
 </details>
 
 <details>
@@ -238,9 +258,9 @@ mindmap
 
 | Name | Type | Use it for |
 |---|---|---|
-| [lecture-summary-pdf](skills/lecture-summary-pdf) | skill | Lecture PDF to an A4 summary with mind maps and MCQs |
-| [interior-design-engineer](skills/interior-design-engineer) | skill | Room design, furniture plans, BOQ |
-| [office-manager](agents/office-manager.md) | agent | Splits broad tasks across the right specialists |
+| [lecture-summary-pdf](plugins/gm-study/skills/lecture-summary-pdf) | skill | Lecture PDF to an A4 summary with mind maps and MCQs |
+| [interior-design-engineer](plugins/gm-interior/skills/interior-design-engineer) | skill | Room design, furniture plans, BOQ |
+| [office-manager](plugins/gm-automation/agents/office-manager.md) | agent | Splits broad tasks across the right specialists |
 </details>
 
 Recommended companions (not bundled, each under its own license): see [EXTERNAL_SKILLS.md](EXTERNAL_SKILLS.md).
@@ -251,12 +271,13 @@ Recommended companions (not bundled, each under its own license): see [EXTERNAL_
 
 ```
 god-mode/
-├── .claude-plugin/          # plugin + marketplace manifests
-├── skills/
-│   ├── god-mode/            # the router: SKILL.md + rules/
-│   └── …8 skills
-├── agents/                  # 9 specialist agents
-├── tools/token_stats.py     # build stats from an OpenWolf ledger
+├── .claude-plugin/marketplace.json   # lists the core + 8 categories
+├── plugins/
+│   ├── god-mode/            # core: router (SKILL.md + rules/), setup, session hook
+│   └── gm-*/                # 8 optional categories (skills + agents)
+├── categories.json          # category names and descriptions (source of truth)
+├── catalog.generated.*      # sizes and contents, built by tools/build_catalog.py
+├── tools/                   # build_catalog.py, token_stats.py
 ├── stats/token-stats.json
 ├── EXTERNAL_SKILLS.md
 ├── CHANGELOG.md
