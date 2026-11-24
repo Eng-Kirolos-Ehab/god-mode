@@ -20,6 +20,15 @@
 
 Paste one line in your terminal. It adds God Mode to Claude Code, shows the category menu (with a description and size for each), installs your picks and sets up OpenWolf:
 
+```bash
+npx kermione@godmode
+```
+
+Works on Windows, macOS and Linux (needs Node 18+). Use ↑/↓ to move, space to select, `a` for all and enter to finish. Add `--all` or `--categories gm-career,gm-video` to skip the menu.
+
+<details>
+<summary>Without Node</summary>
+
 **macOS / Linux / Git Bash**
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.sh | bash
@@ -30,7 +39,10 @@ curl -fsSL https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.
 irm https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.ps1 | iex
 ```
 
-Run it inside your project folder so OpenWolf is set up there too. Skip the menu with `| bash -s -- --all` or `--categories gm-career,gm-video`. The scripts are short and only call `claude plugin`, curl and npx, so [read get.sh](get.sh) first if you like.
+Skip the menu with `| bash -s -- --all` or `--categories gm-career,gm-video`. The scripts are short and only call `claude plugin`, curl and npx, so [read get.sh](get.sh) first if you like.
+</details>
+
+Run it inside your project folder so OpenWolf is set up there too. The npx package source is in [`npm/kermione`](npm/kermione).
 
 ### Or from inside Claude Code
 
@@ -93,8 +105,12 @@ Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm
 **God Mode** هي إضافة (plugin) لـ Claude Code فيها كل المهارات والوكلاء والقواعد اللي اتعلمها Claude من شغل حقيقي: تطبيقات موبايل، مواقع، SEO، توظيف، تصميم، ومحتوى.
 
 **التثبيت بأمر واحد في الـ terminal:**
+```bash
+npx kermione@godmode
+```
+بيشتغل على ويندوز وماك ولينكس، ومحتاج Node 18 أو أحدث. بتتحرك بالأسهم، وتختار بالـ space، وتأكد بالـ Enter.
 
-ماك / لينكس / Git Bash:
+من غير Node، ماك / لينكس / Git Bash:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.sh | bash
 ```
@@ -368,6 +384,7 @@ god-mode/
 ├── EXTERNAL_SKILLS.md
 ├── CHANGELOG.md
 ├── get.sh / get.ps1         # one-line installers (curl | bash, irm | iex)
+├── npm/kermione/               # the `npx kermione@godmode` installer
 └── install.sh / install.ps1 # manual install
 ```
 

@@ -1,0 +1,13 @@
+{
+  "name": "kermione",
+  "version": "2.0.0",
+  "description": "Install God Mode for Claude Code in one command: npx kermione@godmode. Pick the skill categories you want, with OpenWolf set up automatically.",
+  "bin": { "kermione": "bin/kermi.js" },
+  "files": ["bin/kermi.js", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "keywords": ["claude", "claude-code", "skills", "agents", "plugin", "god-mode", "kermi"],
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": { "type": "git", "url": "git+https://github.com/Eng-Kirolos-Ehab/god-mode.git", "directory": "npm/kermione" },
+  "author": "Kirolos Ehab (https://github.com/Eng-Kirolos-Ehab)",
+  "license": "MIT"
+}
