@@ -25,12 +25,15 @@ CORE_DIR = "plugins/god-mode"
 
 
 def size_of(paths: list[Path]) -> int:
+    # Count bytes with LF line endings, so sizes don't change when Git checks files out as CRLF on Windows.
+    def one(f: Path) -> int:
+        return len(f.read_bytes().replace(b"\r\n", b"\n"))
     total = 0
     for p in paths:
         if p.is_file():
-            total += p.stat().st_size
+            total += one(p)
         elif p.is_dir():
-            total += sum(f.stat().st_size for f in p.rglob("*") if f.is_file())
+            total += sum(one(f) for f in p.rglob("*") if f.is_file())
     return total
 
 

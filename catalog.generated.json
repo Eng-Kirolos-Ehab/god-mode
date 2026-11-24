@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "marketplace": "god-mode",
   "core": {
-    "bytes": 20279,
+    "bytes": 20146,
     "size": "20 KB"
   },
   "openwolf": {
@@ -59,7 +59,7 @@
           "path": "plugins/gm-web-design/agents/dashboard-reviewer.md"
         }
       ],
-      "bytes": 53169,
+      "bytes": 53121,
       "size": "52 KB"
     },
     {
@@ -91,8 +91,8 @@
           "path": "plugins/gm-qa-audit/agents/web-auditor.md"
         }
       ],
-      "bytes": 4479,
-      "size": "4.4 KB"
+      "bytes": 4413,
+      "size": "4.3 KB"
     },
     {
       "id": "gm-seo-writing",
@@ -133,7 +133,7 @@
           "path": "plugins/gm-seo-writing/skills/saudi-news-curator"
         }
       ],
-      "bytes": 47314,
+      "bytes": 47287,
       "size": "46 KB"
     },
     {
@@ -198,7 +198,7 @@
           "path": "plugins/gm-career/agents/accounts-keeper.md"
         }
       ],
-      "bytes": 29074,
+      "bytes": 29036,
       "size": "28 KB"
     },
     {
@@ -254,8 +254,8 @@
           "path": "plugins/gm-study/skills/lecture-summary-pdf"
         }
       ],
-      "bytes": 6216,
-      "size": "6.1 KB"
+      "bytes": 6146,
+      "size": "6.0 KB"
     },
     {
       "id": "gm-interior",

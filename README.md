@@ -18,6 +18,22 @@
 
 ## 🚀 Install (one command)
 
+Paste one line in your terminal. It adds God Mode to Claude Code, shows the category menu (with a description and size for each), installs your picks and sets up OpenWolf:
+
+**macOS / Linux / Git Bash**
+```bash
+curl -fsSL https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.sh | bash
+```
+
+**Windows PowerShell**
+```powershell
+irm https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.ps1 | iex
+```
+
+Run it inside your project folder so OpenWolf is set up there too. Skip the menu with `| bash -s -- --all` or `--categories gm-career,gm-video`. The scripts are short and only call `claude plugin`, curl and npx, so [read get.sh](get.sh) first if you like.
+
+### Or from inside Claude Code
+
 Type this inside Claude Code:
 
 ```
@@ -45,12 +61,12 @@ The core (20 KB) is always installed. Everything else is optional:
 | # | Category | Plugin id | Size | What it does for you |
 |---|---|---|---|---|
 | 1 | 🎨 **Web & Design** | `gm-web-design` | 52 KB | Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone. |
-| 2 | 🛠️ **QA & Audit** | `gm-qa-audit` | 4.4 KB | Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix. |
+| 2 | 🛠️ **QA & Audit** | `gm-qa-audit` | 4.3 KB | Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix. |
 | 3 | 📈 **SEO & Writing** | `gm-seo-writing` | 46 KB | Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles. |
 | 4 | 🎬 **Video & Marketing** | `gm-video` | 2.7 KB | Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it. *Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.* |
 | 5 | 💼 **Career** | `gm-career` | 28 KB | Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them. |
 | 6 | 🤖 **Automation & Agents** | `gm-automation` | 11 KB | Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists. |
-| 7 | 📚 **Study** | `gm-study` | 6.1 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. |
+| 7 | 📚 **Study** | `gm-study` | 6.0 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. |
 | 8 | 🛋️ **Interior Design** | `gm-interior` | 13 KB | Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board. |
 <!-- CATEGORIES:END -->
 
@@ -76,7 +92,19 @@ Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm
 
 **God Mode** هي إضافة (plugin) لـ Claude Code فيها كل المهارات والوكلاء والقواعد اللي اتعلمها Claude من شغل حقيقي: تطبيقات موبايل، مواقع، SEO، توظيف، تصميم، ومحتوى.
 
-**التثبيت:** ابعت لـ Claude بتاعك الأمر ده:
+**التثبيت بأمر واحد في الـ terminal:**
+
+ماك / لينكس / Git Bash:
+```bash
+curl -fsSL https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.sh | bash
+```
+ويندوز PowerShell:
+```powershell
+irm https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.ps1 | iex
+```
+الأمر ده بيضيف God Mode لـ Claude Code، ويعرض قايمة الأقسام بوصف وحجم كل قسم، وينزّل اللي تختاره، ويسطّب OpenWolf. شغّله وإنت جوه فولدر المشروع.
+
+أو من جوه Claude Code:
 ```
 /plugin install god-mode --marketplace Eng-Kirolos-Ehab/god-mode
 ```
@@ -247,7 +275,7 @@ Copy a website you like into a Next.js project, recolor a design image with a ne
 </details>
 
 <details>
-<summary><b>🛠️ QA & Audit · 4.4 KB</b> (<code>gm-qa-audit</code>)</summary>
+<summary><b>🛠️ QA & Audit · 4.3 KB</b> (<code>gm-qa-audit</code>)</summary>
 
 Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.
 
@@ -303,7 +331,7 @@ Pull data from a website without scraping the page, and hand a big task to a man
 </details>
 
 <details>
-<summary><b>📚 Study · 6.1 KB</b> (<code>gm-study</code>)</summary>
+<summary><b>📚 Study · 6.0 KB</b> (<code>gm-study</code>)</summary>
 
 Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.
 
@@ -339,6 +367,7 @@ god-mode/
 ├── stats/token-stats.json
 ├── EXTERNAL_SKILLS.md
 ├── CHANGELOG.md
+├── get.sh / get.ps1         # one-line installers (curl | bash, irm | iex)
 └── install.sh / install.ps1 # manual install
 ```
 
