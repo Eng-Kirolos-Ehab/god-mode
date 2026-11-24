@@ -28,7 +28,7 @@ Match the request to one row. When two rows fit, pick the more specific one. If 
 | Mobile QA | test an app before a store build | agent `mobile-app-qa` |
 | Web audit | site stuck loading, CORS, 500s, slow | agent `web-auditor` |
 | SEO | indexing, AI crawlers, structured data | agent `seo-ai-visibility` |
-| Video/marketing | promo film, trailer, launch copy | agent `promo-film-maker` |
+| Video/marketing | promo film, trailer, edit my footage, shorts, captions, launch copy | agent `promo-film-maker` (it picks the right video tool) |
 | Dashboards | review an admin, analytics or smart-home dashboard | agent `dashboard-reviewer` |
 | Mobile web review | phone-width review of a site or portfolio | agent `mobile-ui-reviewer` |
 | Many specialists | broad task, "someone handle this" | agent `office-manager` |
