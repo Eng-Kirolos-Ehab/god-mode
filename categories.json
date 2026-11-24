@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "marketplace": "god-mode",
   "openwolf": { "package": "openwolf", "version": "2.5.3", "approx_download": "≈3 MB (npm)" },
   "core": {
@@ -40,12 +40,11 @@
       "id": "gm-seo-writing",
       "name": "SEO & Writing",
       "emoji": "📈",
-      "description": "Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.",
+      "description": "Get found on Google and in AI answers, and make AI-sounding text read like a person wrote it.",
       "extras": null,
       "items": [
         { "name": "seo-ai-visibility", "type": "agent", "say": "why isn't my site showing on Google or in ChatGPT?", "get": "A ranked fix list: robots, sitemap, llms.txt, schema, hreflang, speed", "asks": "the site URL, languages, the pages that matter, and whether to allow AI crawlers" },
-        { "name": "humanizer", "type": "skill", "say": "make this sound less like AI (paste text)", "get": "The same text with AI tells removed and every fact kept", "asks": "nothing beyond the text" },
-        { "name": "saudi-news-curator", "type": "skill", "say": "هات تريند السعودية النهارده and write an SEO article", "get": "A verified Arabic + English article with SEO title, meta and hashtags", "asks": "your site URL (once) and the topic or section" }
+        { "name": "humanizer", "type": "skill", "say": "make this sound less like AI (paste text)", "get": "The same text with AI tells removed and every fact kept", "asks": "nothing beyond the text" }
       ]
     },
     {

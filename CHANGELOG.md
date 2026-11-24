@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.1
+- Removed `saudi-news-curator`. SEO & Writing now has `seo-ai-visibility` and `humanizer`.
+
 ## 2.0.0
 
 **Pick what you install**

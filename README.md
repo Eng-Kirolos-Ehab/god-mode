@@ -74,7 +74,7 @@ The core (20 KB) is always installed. Everything else is optional:
 |---|---|---|---|---|
 | 1 | 🎨 **Web & Design** | `gm-web-design` | 52 KB | Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone. |
 | 2 | 🛠️ **QA & Audit** | `gm-qa-audit` | 4.3 KB | Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix. |
-| 3 | 📈 **SEO & Writing** | `gm-seo-writing` | 46 KB | Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles. |
+| 3 | 📈 **SEO & Writing** | `gm-seo-writing` | 35 KB | Get found on Google and in AI answers, and make AI-sounding text read like a person wrote it. |
 | 4 | 🎬 **Video & Marketing** | `gm-video` | 2.7 KB | Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it. *Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.* |
 | 5 | 💼 **Career** | `gm-career` | 28 KB | Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them. |
 | 6 | 🤖 **Automation & Agents** | `gm-automation` | 11 KB | Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists. |
@@ -248,7 +248,6 @@ mindmap
     SEO & Writing
       seo-ai-visibility
       humanizer
-      saudi-news-curator
     Video & Marketing
       promo-film-maker
     Career
@@ -302,15 +301,14 @@ Test a mobile app before you publish it, or find out why a website is broken or 
 </details>
 
 <details>
-<summary><b>📈 SEO & Writing · 46 KB</b> (<code>gm-seo-writing</code>)</summary>
+<summary><b>📈 SEO & Writing · 35 KB</b> (<code>gm-seo-writing</code>)</summary>
 
-Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.
+Get found on Google and in AI answers, and make AI-sounding text read like a person wrote it.
 
 | Name | Type | Say something like | You get | It asks you for |
 |---|---|---|---|---|
 | [seo-ai-visibility](plugins/gm-seo-writing/agents/seo-ai-visibility.md) | agent | "why isn't my site showing on Google or in ChatGPT?" | A ranked fix list: robots, sitemap, llms.txt, schema, hreflang, speed | the site URL, languages, the pages that matter, and whether to allow AI crawlers |
 | [humanizer](plugins/gm-seo-writing/skills/humanizer) | skill | "make this sound less like AI (paste text)" | The same text with AI tells removed and every fact kept | nothing beyond the text |
-| [saudi-news-curator](plugins/gm-seo-writing/skills/saudi-news-curator) | skill | "هات تريند السعودية النهارده and write an SEO article" | A verified Arabic + English article with SEO title, meta and hashtags | your site URL (once) and the topic or section |
 </details>
 
 <details>

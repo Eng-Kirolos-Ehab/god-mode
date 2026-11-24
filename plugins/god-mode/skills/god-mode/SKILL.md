@@ -25,7 +25,6 @@ Skills and agents ship in optional categories (the plugin id is in brackets). If
 | Careers | CV, LinkedIn, ATS, interview prep, cover letter | skill `cv-optimizer`, agent `job-hunter` [gm-career] |
 | Accounts | sign in or sign up on job sites | agent `accounts-keeper` [gm-career] |
 | Study | lecture PDF to a designed summary PDF | skill `lecture-summary-pdf` [gm-study] |
-| News | Saudi or Gulf news, bilingual SEO article | skill `saudi-news-curator` [gm-seo-writing] |
 | Data from sites | get data through a site's own requests | skill `api-anything` [gm-automation] |
 | Mobile QA | test an app before a store build | agent `mobile-app-qa` [gm-qa-audit] |
 | Web audit | site stuck loading, CORS, 500s, slow | agent `web-auditor` [gm-qa-audit] |
