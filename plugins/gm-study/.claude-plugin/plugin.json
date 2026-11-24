@@ -1,7 +1,7 @@
 {
   "name": "gm-study",
   "version": "2.0.0",
-  "description": "God Mode · Study: Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions.",
+  "description": "God Mode · Study: Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.",
   "author": {
     "name": "Kirolos Ehab",
     "url": "https://github.com/Eng-Kirolos-Ehab"

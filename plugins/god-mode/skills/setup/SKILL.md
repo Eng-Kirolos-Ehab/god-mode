@@ -12,18 +12,18 @@ God Mode is a small core (this setup, the router, the rules) plus optional **cat
 ## Catalog
 
 <!-- CATALOG:START -->
-| # | Category (plugin id) | Size | What you get | Extras |
-|---|---|---|---|---|
-| 1 | **Web & Design** (`gm-web-design`) | 51 KB | Clone a website into Next.js, swap a color palette across a codebase, and two reviewers for phone-width pages and dashboards. Contains: skill `clone-website`, skill `color-palette-swap`, agent `dashboard-reviewer`, agent `mobile-ui-reviewer`. | — |
-| 2 | **QA & Audit** (`gm-qa-audit`) | 3.5 KB | Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes). Contains: agent `mobile-app-qa`, agent `web-auditor`. | — |
-| 3 | **SEO & Writing** (`gm-seo-writing`) | 46 KB | SEO and AI-crawler visibility audits, rewrite text that sounds like AI, and bilingual Arabic/English news articles. Contains: skill `humanizer`, skill `saudi-news-curator`, agent `seo-ai-visibility`. | — |
-| 4 | **Video & Marketing** (`gm-video`) | 2.7 KB | Promo films, trailers, shorts and captions with launch copy. Picks the right video tool for each job. Contains: agent `promo-film-maker`. | Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes. |
-| 5 | **Career** (`gm-career`) | 28 KB | CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry. Contains: skill `cv-optimizer`, agent `accounts-keeper`, agent `job-hunter`. | — |
-| 6 | **Automation & Agents** (`gm-automation`) | 11 KB | Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists. Contains: skill `api-anything`, agent `office-manager`. | — |
-| 7 | **Study** (`gm-study`) | 5.3 KB | Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions. Contains: skill `lecture-summary-pdf`. | — |
-| 8 | **Interior Design** (`gm-interior`) | 13 KB | Room layouts, furniture plans, bills of quantities and mood boards. Contains: skill `interior-design-engineer`. | — |
+| # | Category (plugin id) | Size | What it does for you | Try saying | Extras |
+|---|---|---|---|---|---|
+| 1 | **Web & Design** (`gm-web-design`) | 52 KB | Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone. | "clone https://example.com into Next.js" · "recolor this design with this palette (attach both images)" | — |
+| 2 | **QA & Audit** (`gm-qa-audit`) | 4.4 KB | Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix. | "test this build before I upload it" · "my site is stuck loading / shows 500" | — |
+| 3 | **SEO & Writing** (`gm-seo-writing`) | 46 KB | Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles. | "why isn't my site showing on Google or in ChatGPT?" · "make this sound less like AI (paste text)" | — |
+| 4 | **Video & Marketing** (`gm-video`) | 2.7 KB | Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it. | "make a 30-second promo for my app" | Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes. |
+| 5 | **Career** (`gm-career`) | 28 KB | Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them. | "analyze my CV for this job (paste both)" · "apply to this job (paste the post)" | — |
+| 6 | **Automation & Agents** (`gm-automation`) | 11 KB | Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists. | "get the flight prices from A to B on <site>" · "someone handle the launch checklist" | — |
+| 7 | **Study** (`gm-study`) | 6.1 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. | "لخّص المحاضرة دي (attach the PDF)" | — |
+| 8 | **Interior Design** (`gm-interior`) | 13 KB | Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board. | "design my living room 4×5 m (attach photos)" | — |
 
-Core (always installed): 19 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
+Core (always installed): 20 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
 <!-- CATALOG:END -->
 
 ## Steps
@@ -32,7 +32,7 @@ Core (always installed): 19 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
 
 2. **Ask with the AskUserQuestion tool.** Use two questions, each with `multiSelect: true`. Put categories 1–4 in the first question and 5–8 in the second, because a question holds at most 4 options.
    - Option **label**: the category name, a middle dot, then its size, e.g. `Career · 9 KB`. Add `✓` at the end if it's already installed.
-   - Option **description**: the "What you get" text, plus the Extras text when there is one.
+   - Option **description**: the "What it does for you" text, then `e.g.` and the first "Try saying" example, plus the Extras text when there is one. Keep it practical: what the user types and what they get back.
    - Question header: `Categories` and `More`. Question text, e.g.: "Which God Mode categories do you want? Pick any number. Sizes are download sizes."
    - Write the questions in the user's language. Keep the plugin ids in English.
    - If AskUserQuestion isn't available, print the catalog as a numbered list with sizes and ask the user to reply with numbers (e.g. `1 3 5`), or `all`.

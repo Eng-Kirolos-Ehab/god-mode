@@ -1,9 +1,9 @@
-#meta	2.0.0	19491	19 KB	2.5.3
-gm-web-design	Web & Design	51 KB	52511	Clone a website into Next.js, swap a color palette across a codebase, and two reviewers for phone-width pages and dashboards.	
-gm-qa-audit	QA & Audit	3.5 KB	3600	Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes).	
-gm-seo-writing	SEO & Writing	46 KB	46936	SEO and AI-crawler visibility audits, rewrite text that sounds like AI, and bilingual Arabic/English news articles.	
-gm-video	Video & Marketing	2.7 KB	2756	Promo films, trailers, shorts and captions with launch copy. Picks the right video tool for each job.	Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.
-gm-career	Career	28 KB	29074	CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry.	
-gm-automation	Automation & Agents	11 KB	11466	Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists.	
-gm-study	Study	5.3 KB	5437	Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions.	
-gm-interior	Interior Design	13 KB	12894	Room layouts, furniture plans, bills of quantities and mood boards.	
+#meta	2.0.0	20279	20 KB	2.5.3
+gm-web-design	Web & Design	52 KB	53169	Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone.	
+gm-qa-audit	QA & Audit	4.4 KB	4479	Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.	
+gm-seo-writing	SEO & Writing	46 KB	47314	Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.	
+gm-video	Video & Marketing	2.7 KB	2756	Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it.	Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.
+gm-career	Career	28 KB	29074	Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them.	
+gm-automation	Automation & Agents	11 KB	11466	Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.	
+gm-study	Study	6.1 KB	6216	Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.	
+gm-interior	Interior Design	13 KB	12894	Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board.	

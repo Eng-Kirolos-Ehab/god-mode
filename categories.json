@@ -2,54 +2,104 @@
   "version": "2.0.0",
   "marketplace": "god-mode",
   "openwolf": { "package": "openwolf", "version": "2.5.3", "approx_download": "≈3 MB (npm)" },
+  "core": {
+    "name": "Core (always installed)",
+    "items": [
+      { "name": "god-mode", "type": "skill", "path": "plugins/god-mode/skills/god-mode", "say": "/god-mode build me a landing page", "get": "Picks the one skill or agent that fits and applies the working rules and token protocol", "asks": "nothing" },
+      { "name": "setup", "type": "skill", "path": "plugins/god-mode/skills/setup", "say": "/god-mode:setup", "get": "The category picker: add or remove categories", "asks": "which categories you want" },
+      { "name": "standing-rules", "type": "rules", "path": "plugins/god-mode/skills/god-mode/rules/standing-rules.md", "say": "(loaded automatically)", "get": "Safety and quality rules: no deletes without OK, drafts not sends, backups before production writes", "asks": "nothing" },
+      { "name": "design-color-rules", "type": "rules", "path": "plugins/god-mode/skills/god-mode/rules/design-color-rules.md", "say": "pick a palette for my app", "get": "Harmonies, 60-30-10, OKLCH shade scales, WCAG contrast checks", "asks": "your brand color, if any" }
+    ]
+  },
   "categories": [
     {
       "id": "gm-web-design",
       "name": "Web & Design",
-      "description": "Clone a website into Next.js, swap a color palette across a codebase, and two reviewers for phone-width pages and dashboards.",
-      "extras": null
+      "emoji": "🎨",
+      "description": "Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone.",
+      "extras": null,
+      "items": [
+        { "name": "clone-website", "type": "skill", "say": "clone https://example.com into Next.js", "get": "A working Next.js copy, built section by section with its assets and styles", "asks": "the URL(s), and whether you own the site or have the right to copy it" },
+        { "name": "color-palette-swap", "type": "skill", "say": "recolor this design with this palette (attach both images)", "get": "Two recolored PNGs: a light-to-light match and an aesthetic alternative", "asks": "the design file (PSD/PNG/JPG) and the palette image" },
+        { "name": "mobile-ui-reviewer", "type": "agent", "say": "review my site on mobile", "get": "Scores per area plus exact CSS/HTML fixes, checked at 360–430px", "asks": "the URL, which pages, and whether to fix or only report" },
+        { "name": "dashboard-reviewer", "type": "agent", "say": "review my admin dashboard", "get": "Scores and the top 3 fixes for layout, data correctness and design consistency", "asks": "the URL or screenshots, and who uses it for what" }
+      ]
     },
     {
       "id": "gm-qa-audit",
       "name": "QA & Audit",
-      "description": "Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes).",
-      "extras": null
+      "emoji": "🛠️",
+      "description": "Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.",
+      "extras": null,
+      "items": [
+        { "name": "mobile-app-qa", "type": "agent", "say": "test this build before I upload it", "get": "A bug report with steps and evidence, and a GO / NO-GO verdict", "asks": "the app, the platforms, what changed, and a test server and account" },
+        { "name": "web-auditor", "type": "agent", "say": "my site is stuck loading / shows 500", "get": "Cause, fix, proof it works, and the rollback command", "asks": "the URL, the symptom, where the code is, and whether to fix or only report" }
+      ]
     },
     {
       "id": "gm-seo-writing",
       "name": "SEO & Writing",
-      "description": "SEO and AI-crawler visibility audits, rewrite text that sounds like AI, and bilingual Arabic/English news articles.",
-      "extras": null
+      "emoji": "📈",
+      "description": "Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.",
+      "extras": null,
+      "items": [
+        { "name": "seo-ai-visibility", "type": "agent", "say": "why isn't my site showing on Google or in ChatGPT?", "get": "A ranked fix list: robots, sitemap, llms.txt, schema, hreflang, speed", "asks": "the site URL, languages, the pages that matter, and whether to allow AI crawlers" },
+        { "name": "humanizer", "type": "skill", "say": "make this sound less like AI (paste text)", "get": "The same text with AI tells removed and every fact kept", "asks": "nothing beyond the text" },
+        { "name": "saudi-news-curator", "type": "skill", "say": "هات تريند السعودية النهارده and write an SEO article", "get": "A verified Arabic + English article with SEO title, meta and hashtags", "asks": "your site URL (once) and the topic or section" }
+      ]
     },
     {
       "id": "gm-video",
       "name": "Video & Marketing",
-      "description": "Promo films, trailers, shorts and captions with launch copy. Picks the right video tool for each job.",
-      "extras": "Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes."
+      "emoji": "🎬",
+      "description": "Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it.",
+      "extras": "Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.",
+      "items": [
+        { "name": "promo-film-maker", "type": "agent", "say": "make a 30-second promo for my app", "get": "A storyboard to approve, the rendered video, then caption, hashtags and store text", "asks": "the product, the platform (9:16 or 16:9), length, language, and the one message to remember" }
+      ]
     },
     {
       "id": "gm-career",
       "name": "Career",
-      "description": "CV and LinkedIn optimizer, an ATS-aware job hunter that tailors a CV per job, and a job-site accounts registry.",
-      "extras": null
+      "emoji": "💼",
+      "description": "Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them.",
+      "extras": null,
+      "items": [
+        { "name": "cv-optimizer", "type": "skill", "say": "analyze my CV for this job (paste both)", "get": "Line-by-line fixes, an ATS keyword check, and before/after rewrites", "asks": "your full CV, the job description, years, top achievements with numbers, and your target market" },
+        { "name": "job-hunter", "type": "agent", "say": "apply to this job (paste the post)", "get": "A fit verdict, a tailored CV, form answers and an email draft, logged", "asks": "your profile once (CV, skills, roles, locations, salary range) and any number it can't find" },
+        { "name": "accounts-keeper", "type": "agent", "say": "which job sites am I registered on?", "get": "A registry of your job-site accounts and their status", "asks": "which sites, and which Google account to use. You type passwords and codes" }
+      ]
     },
     {
       "id": "gm-automation",
       "name": "Automation & Agents",
-      "description": "Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists.",
-      "extras": null
+      "emoji": "🤖",
+      "description": "Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.",
+      "extras": null,
+      "items": [
+        { "name": "api-anything", "type": "skill", "say": "get the flight prices from A to B on <site>", "get": "The data straight from the site's own requests, or a reusable operation", "asks": "the site and what you want from it; you sign in yourself" },
+        { "name": "office-manager", "type": "agent", "say": "someone handle the launch checklist", "get": "The task split across the right agents, with a combined report", "asks": "one question at most, when a decision is yours" }
+      ]
     },
     {
       "id": "gm-study",
       "name": "Study",
-      "description": "Turn a lecture PDF into a designed A4 study summary with mind maps, diagrams and exam questions.",
-      "extras": null
+      "emoji": "📚",
+      "description": "Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.",
+      "extras": null,
+      "items": [
+        { "name": "lecture-summary-pdf", "type": "skill", "say": "لخّص المحاضرة دي (attach the PDF)", "get": "An A4 summary PDF with mind maps, diagrams, exam traps, MCQ + True/False and an answer key", "asks": "how many questions, whether you want a recap in your language, and pages to skip" }
+      ]
     },
     {
       "id": "gm-interior",
       "name": "Interior Design",
-      "description": "Room layouts, furniture plans, bills of quantities and mood boards.",
-      "extras": null
+      "emoji": "🛋️",
+      "description": "Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board.",
+      "extras": null,
+      "items": [
+        { "name": "interior-design-engineer", "type": "skill", "say": "design my living room 4×5 m (attach photos)", "get": "Layout options, furniture and lighting plan, BOQ, and a mood board", "asks": "room photos and measurements, inspiration images, budget and style" }
+      ]
     }
   ]
 }

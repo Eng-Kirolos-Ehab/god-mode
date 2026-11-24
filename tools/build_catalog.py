@@ -65,6 +65,15 @@ def main() -> None:
         what = contents(d)
         if not what["skills"] and not what["agents"]:
             raise SystemExit(f"empty category: {c['id']}")
+        listed = {(i["type"], i["name"]) for i in c.get("items", [])}
+        actual = {("skill", s) for s in what["skills"]} | {("agent", a) for a in what["agents"]}
+        if listed != actual:
+            raise SystemExit(f"{c['id']}: items in categories.json {sorted(listed)} != files {sorted(actual)}")
+        for i in c["items"]:
+            i["path"] = f"plugins/{c['id']}/skills/{i['name']}" if i["type"] == "skill" else f"plugins/{c['id']}/agents/{i['name']}.md"
+            for k in ("say", "get", "asks"):
+                if not i.get(k):
+                    raise SystemExit(f"{c['id']}/{i['name']}: missing '{k}'")
         size = size_of([d / "skills", d / "agents"])
         write_json(d / ".claude-plugin" / "plugin.json", {
             "name": c["id"],
@@ -115,7 +124,7 @@ def main() -> None:
         "marketplace": market,
         "core": {"bytes": core_size, "size": human(core_size)},
         "openwolf": cfg["openwolf"],
-        "categories": [{k: c[k] for k in ("id", "name", "description", "extras", "skills", "agents", "bytes", "size")} for c in cats],
+        "categories": [{k: c[k] for k in ("id", "name", "emoji", "description", "extras", "skills", "agents", "items", "bytes", "size")} for c in cats],
     })
 
     # Plain TSV for install.sh (no JSON parser needed). Line 1 = meta, then one line per category.
@@ -124,10 +133,10 @@ def main() -> None:
     tsv += [f"{c['id']}\t{clean(c['name'])}\t{c['size']}\t{c['bytes']}\t{clean(c['description'])}\t{clean(c['extras'])}" for c in cats]
     (ROOT / "catalog.generated.tsv").write_text("\n".join(tsv) + "\n", encoding="utf-8", newline="\n")
 
-    rows = ["| # | Category (plugin id) | Size | What you get | Extras |", "|---|---|---|---|---|"]
+    rows = ["| # | Category (plugin id) | Size | What it does for you | Try saying | Extras |", "|---|---|---|---|---|---|"]
     for i, c in enumerate(cats, 1):
-        inside = ", ".join([f"skill `{s}`" for s in c["skills"]] + [f"agent `{a}`" for a in c["agents"]])
-        rows.append(f"| {i} | **{c['name']}** (`{c['id']}`) | {c['size']} | {c['description']} Contains: {inside}. | {c['extras'] or '—'} |")
+        tries = " · ".join(f"\"{it['say']}\"" for it in c["items"][:2])
+        rows.append(f"| {i} | **{c['name']}** (`{c['id']}`) | {c['size']} | {c['description']} | {tries} | {c['extras'] or '—'} |")
     table = "\n".join(rows) + f"\n\nCore (always installed): {human(core_size)}. OpenWolf: {cfg['openwolf']['approx_download']}, pinned to {cfg['openwolf']['version']}."
     setup = core / "skills" / "setup" / "SKILL.md"
     text = setup.read_text(encoding="utf-8")
@@ -136,9 +145,46 @@ def main() -> None:
         raise SystemExit("CATALOG markers not found in the setup SKILL.md")
     setup.write_text(new, encoding="utf-8")
 
+    write_readme(cfg, cats, core_size)
+
     for c in cats:
         print(f"{c['id']:<16} {c['size']:>8}  {len(c['skills'])} skills, {len(c['agents'])} agents")
     print(f"core             {human(core_size):>8}")
+
+
+def replace_block(text: str, name: str, body: str) -> str:
+    new, n = re.subn(rf"(<!-- {name}:START -->).*?(<!-- {name}:END -->)", lambda m: m.group(1) + "\n" + body + "\n" + m.group(2), text, flags=re.S)
+    if n != 1:
+        raise SystemExit(f"{name} markers not found in README.md")
+    return new
+
+
+def write_readme(cfg: dict, cats: list[dict], core_size: int) -> None:
+    readme = ROOT / "README.md"
+    text = readme.read_text(encoding="utf-8")
+
+    cat_rows = ["| # | Category | Plugin id | Size | What it does for you |", "|---|---|---|---|---|"]
+    for i, c in enumerate(cats, 1):
+        extra = f" *{c['extras']}*" if c["extras"] else ""
+        cat_rows.append(f"| {i} | {c['emoji']} **{c['name']}** | `{c['id']}` | {c['size']} | {c['description']}{extra} |")
+    text = replace_block(text, "CATEGORIES", f"The core ({human(core_size)}) is always installed. Everything else is optional:\n\n" + "\n".join(cat_rows))
+
+    def table(items: list[dict]) -> str:
+        out = ["| Name | Type | Say something like | You get | It asks you for |", "|---|---|---|---|---|"]
+        for it in items:
+            out.append(f"| [{it['name']}]({it['path']}) | {it['type']} | \"{it['say']}\" | {it['get']} | {it['asks']} |")
+        return "\n".join(out)
+
+    mm = ["```mermaid", "mindmap", "  root((God Mode))", "    Core"] + [f"      {it['name']}" for it in cfg["core"]["items"]]
+    for c in cats:
+        mm.append(f"    {c['name']}")
+        mm += [f"      {it['name']}" for it in c["items"]]
+    mm.append("```")
+    parts = ["\n".join(mm), "", f"<details open>\n<summary><b>🧭 {cfg['core']['name']} · {human(core_size)}</b></summary>\n\n{table(cfg['core']['items'])}\n</details>"]
+    for c in cats:
+        parts.append(f"<details>\n<summary><b>{c['emoji']} {c['name']} · {c['size']}</b> (<code>{c['id']}</code>)</summary>\n\n{c['description']}\n\n{table(c['items'])}\n</details>")
+    text = replace_block(text, "SKILLMAP", "\n\n".join(parts))
+    readme.write_text(text, encoding="utf-8")
 
 
 if __name__ == "__main__":

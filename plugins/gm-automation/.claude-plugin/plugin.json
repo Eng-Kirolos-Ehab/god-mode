@@ -1,7 +1,7 @@
 {
   "name": "gm-automation",
   "version": "2.0.0",
-  "description": "God Mode · Automation & Agents: Get data from websites through their own requests, and an office-manager agent that splits big tasks across specialists.",
+  "description": "God Mode · Automation & Agents: Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.",
   "author": {
     "name": "Kirolos Ehab",
     "url": "https://github.com/Eng-Kirolos-Ehab"

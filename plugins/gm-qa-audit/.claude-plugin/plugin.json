@@ -1,7 +1,7 @@
 {
   "name": "gm-qa-audit",
   "version": "2.0.0",
-  "description": "God Mode · QA & Audit: Agents that test a mobile app before a store build and find why a site is broken or slow (CORS, 500s, routes).",
+  "description": "God Mode · QA & Audit: Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.",
   "author": {
     "name": "Kirolos Ehab",
     "url": "https://github.com/Eng-Kirolos-Ehab"

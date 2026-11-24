@@ -1,25 +1,31 @@
 ---
 name: "lecture-summary-pdf"
-description: "Turn a university lecture PDF into a designed A4 study-summary PDF with mind maps, diagrams, exam traps, 40 MCQ and 30 True/False with answer key."
+description: "Turn a lecture PDF or slides into one designed A4 study-summary PDF: mind maps, diagrams, exam traps and a question bank (MCQ + True/False) with an answer key. Use when the user uploads a lecture and asks for a summary, تلخيص, or exam questions."
 ---
 
 # Lecture Summary PDF
 
-Use when the user uploads a lecture (PDF/slides) and asks for a summary / تلخيص, especially with mind maps and questions. Output is ONE downloadable PDF built from HTML + Chromium (Playwright). Reply to the user in Egyptian Arabic; the summary content stays in the lecture's language (English for science lectures).
+Use when the user uploads a lecture (PDF/slides) and asks for a summary / تلخيص, especially with mind maps and questions. Output is ONE downloadable PDF built from HTML + Chromium (Playwright). Reply in the user's language. The summary content stays in the lecture's language unless the user asks otherwise.
+
+## Ask first (one message, use the defaults if the user says "just do it")
+- **Question bank size:** default 40 MCQ + 30 True/False. Fewer for short lectures?
+- **Extra language box:** a short recap in the user's own language on the Exam Traps page? (default: yes if the user writes in a different language from the lecture)
+- **Cover page:** default none, so the PDF starts with the master mind map.
+- **Anything to skip:** for example the university's vision/mission pages (skipped by default).
 
 ## Content rules
-- Read every page of the lecture (Read with `pages`, max 20 per call). Skip the Arabic vision/mission/رسالة text at the start.
+- Read every page of the lecture (Read with `pages`, max 20 per call). Skip boilerplate pages such as the institution's vision and mission, unless the user wants them.
 - Course aims / ILOs (if present) → two short boxes on page 1 under the master map.
 - Cover EVERYTHING else in the lecture; summarize, don't drop topics. Solve any in-slide practice questions.
 - Fix obvious slide mistakes in a red "Heads-up" box (e.g. wrong compound name, rounded angle), never silently.
-- Questions: exactly 40 MCQ (4 options A–D, one best answer) + 30 True/False, all answerable from the lecture, mix of easy/tricky, no ambiguous options. Answer key: one-line reason per MCQ; every False statement gets its correction.
+- Questions: the agreed count (default 40 MCQ with 4 options A–D and one best answer, plus 30 True/False), all answerable from the lecture, mix of easy/tricky, no ambiguous options. Answer key: one-line reason per MCQ; every False statement gets its correction.
 
-## Do NOT include (user removed these)
-- No cover page — the PDF starts directly with the master mind map page.
-- No subtitle under the page-1 heading (no "Start here…" line).
-- No "ملخص بالمصري" label, no jokey lines (e.g. Hund "يتجوزوا").
+## Defaults that keep it clean (change only if the user asks)
+- No cover page. The PDF starts with the master mind map page.
+- No filler subtitle under the page-1 heading.
+- No jokes or slang labels. Keep the tone of a study document.
 - No "How to use the question bank" box.
-- An Arabic quick-recap box on the Exam Traps page is OK, with no label, RTL, Cairo font.
+- The optional recap box (if agreed) goes on the Exam Traps page, unlabeled, in the user's language, in the correct direction (RTL for Arabic) and an appropriate font.
 
 ## Document structure
 1. `00 The whole lecture on one page` — radial SVG master mind map (dark center circle, 6 coloured branch pills, 3–4 leaf pills each, bezier connectors) + aims/ILOs boxes.

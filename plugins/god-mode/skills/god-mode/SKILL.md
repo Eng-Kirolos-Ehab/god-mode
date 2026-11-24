@@ -18,7 +18,7 @@ Skills and agents ship in optional categories (the plugin id is in brackets). If
 | Domain | The request looks like | Use |
 |---|---|---|
 | Web clone | "copy this site", rebuild a site in Next.js | skill `clone-website` [gm-web-design] |
-| Recolor | swap a palette across an existing codebase | skill `color-palette-swap` [gm-web-design] |
+| Recolor a design | recolor a PSD/PNG/JPG design with a palette image | skill `color-palette-swap` [gm-web-design] |
 | UI colors | pick or check a palette, contrast, shades | `rules/design-color-rules.md` (core) |
 | Interior design | room layout, furniture, BOQ, mood board | skill `interior-design-engineer` [gm-interior] |
 | Writing | text sounds like AI, polish prose | skill `humanizer` [gm-seo-writing] |
@@ -57,6 +57,8 @@ Recommended extras (installed separately; see [EXTERNAL_SKILLS.md](https://githu
 Read `rules/standing-rules.md` once per session before the first change.
 
 ## 4. Safety lines (never cross)
+
+- **Ask, don't assume.** When a skill or agent needs facts about the user (CV, site URL, test account, numbers, preferences), ask once in a single message and save the answers where the skill says. Never invent them, and never reuse data from another person or project.
 
 - **No deletes** of the user's files, data or rows without written permission in chat.
 - **No sending** emails or messages on the user's behalf unless asked for that specific one. Leave drafts instead.
