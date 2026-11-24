@@ -1,13 +1,83 @@
 {
   "name": "god-mode",
-  "owner": { "name": "Kirolos Ehab", "url": "https://github.com/Eng-Kirolos-Ehab" },
-  "metadata": { "description": "God Mode skill collection for Claude Code", "version": "1.1.0" },
+  "owner": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "metadata": {
+    "description": "God Mode skill collection for Claude Code",
+    "version": "2.0.0"
+  },
   "plugins": [
     {
       "name": "god-mode",
-      "source": "./",
-      "description": "One router skill + 8 skills + 9 specialist agents + standing rules + a token-saving protocol.",
-      "version": "1.1.0",
+      "source": "./plugins/god-mode",
+      "description": "Core: router, rules, token protocol, first-run category picker. Install this one.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-web-design",
+      "source": "./plugins/gm-web-design",
+      "description": "Web & Design: Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-qa-audit",
+      "source": "./plugins/gm-qa-audit",
+      "description": "QA & Audit: Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-seo-writing",
+      "source": "./plugins/gm-seo-writing",
+      "description": "SEO & Writing: Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-video",
+      "source": "./plugins/gm-video",
+      "description": "Video & Marketing: Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-career",
+      "source": "./plugins/gm-career",
+      "description": "Career: Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-automation",
+      "source": "./plugins/gm-automation",
+      "description": "Automation & Agents: Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-study",
+      "source": "./plugins/gm-study",
+      "description": "Study: Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "productivity"
+    },
+    {
+      "name": "gm-interior",
+      "source": "./plugins/gm-interior",
+      "description": "Interior Design: Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board.",
+      "version": "2.0.0",
       "license": "MIT",
       "category": "productivity"
     }

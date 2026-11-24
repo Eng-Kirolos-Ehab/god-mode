@@ -35,7 +35,26 @@ Or just send this to your Claude:
 
 > Install the God Mode plugin from https://github.com/Eng-Kirolos-Ehab/god-mode
 
-Then restart Claude Code and type `/god-mode <your task>`, or simply describe the task.
+Then restart Claude Code. **In your first session, God Mode asks which categories you want** (multi-select, with a description and download size for each) and installs only those. It also sets up [OpenWolf](https://www.npmjs.com/package/openwolf) in your project automatically. Change your picks any time with `/god-mode:setup`.
+
+### Categories
+
+<!-- CATEGORIES:START -->
+The core (20 KB) is always installed. Everything else is optional:
+
+| # | Category | Plugin id | Size | What it does for you |
+|---|---|---|---|---|
+| 1 | 🎨 **Web & Design** | `gm-web-design` | 52 KB | Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone. |
+| 2 | 🛠️ **QA & Audit** | `gm-qa-audit` | 4.4 KB | Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix. |
+| 3 | 📈 **SEO & Writing** | `gm-seo-writing` | 46 KB | Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles. |
+| 4 | 🎬 **Video & Marketing** | `gm-video` | 2.7 KB | Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it. *Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.* |
+| 5 | 💼 **Career** | `gm-career` | 28 KB | Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them. |
+| 6 | 🤖 **Automation & Agents** | `gm-automation` | 11 KB | Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists. |
+| 7 | 📚 **Study** | `gm-study` | 6.1 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. |
+| 8 | 🛋️ **Interior Design** | `gm-interior` | 13 KB | Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board. |
+<!-- CATEGORIES:END -->
+
+You can also install a category directly: `/plugin install gm-career@god-mode`.
 
 <details>
 <summary>Manual install (copy files instead of using the plugin)</summary>
@@ -43,13 +62,13 @@ Then restart Claude Code and type `/god-mode <your task>`, or simply describe th
 ```bash
 git clone https://github.com/Eng-Kirolos-Ehab/god-mode.git
 cd god-mode
-./install.sh          # macOS / Linux / Git Bash
-pwsh ./install.ps1    # Windows PowerShell
+./install.sh          # macOS / Linux / Git Bash: shows the category menu
+pwsh ./install.ps1    # Windows PowerShell: shows the category menu
 ```
-Existing skills or agents with the same name are skipped unless you pass `--force` / `-Force`.
+Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm-video`, or install everything with `--all` / `-All`. Existing skills or agents with the same name are skipped unless you pass `--force` / `-Force`. Run it from your project folder to set up OpenWolf there, or pass `--no-openwolf` / `-NoOpenWolf` to skip it.
 </details>
 
-**Safe by design:** the plugin contains only Markdown instructions and a few small Python helper scripts. It has no hooks, no MCP servers, no network calls of its own and no access to any account. Uninstall any time with `/plugin uninstall god-mode`.
+**What it runs on your machine:** the plugins are Markdown instructions and a few small Python helper scripts, with no MCP servers and no access to any account. The core adds **one session-start hook** ([`session-start.sh`](plugins/god-mode/hooks/session-start.sh)). It only prints a note for Claude: "setup pending", or "OpenWolf not set up in this git project". It downloads and changes nothing by itself. During setup, Claude runs `claude plugin install` for the categories you pick and `npx openwolf@2.5.3 init --agent claude` (pinned version; it keeps your existing CLAUDE.md and settings). Uninstall any time with `/plugin uninstall god-mode` and the `gm-*` plugins.
 
 ---
 
@@ -61,6 +80,8 @@ Existing skills or agents with the same name are skipped unless you pass `--forc
 ```
 /plugin install god-mode --marketplace Eng-Kirolos-Ehab/god-mode
 ```
+
+**أول ما تفتح جلسة بعد التثبيت**، God Mode هيسألك عايز أنهي أقسام (تقدر تختار أكتر من قسم)، ومعاها وصف كل قسم وحجم تحميله، وينزّل اللي اخترته بس. وكمان بيسطّب **OpenWolf** في المشروع لوحده. تقدر تغيّر اختياراتك في أي وقت بـ `/god-mode:setup`.
 
 - **موزّع ذكي:** بيقرأ طلبك ويختار المهارة أو الوكيل المناسب بس، من غير ما يحمّل كل حاجة.
 - **قواعد ثابتة:** كل قاعدة جت من تصحيح أو مشكلة حصلت فعلًا في الشغل.
@@ -74,12 +95,13 @@ Existing skills or agents with the same name are skipped unless you pass `--forc
 | | Feature | What it does |
 |---|---|---|
 | 🧭 | **Router** | Maps a request to the one skill or agent that fits, so only that one loads. |
-| 📏 | **Standing rules** | 20+ rules, each from a real correction or incident ([standing-rules.md](skills/god-mode/rules/standing-rules.md)). |
+| 📏 | **Standing rules** | 20+ rules, each from a real correction or incident ([standing-rules.md](plugins/god-mode/skills/god-mode/rules/standing-rules.md)). |
 | 💰 | **Token protocol** | Index-first reading, no repeated reads, targeted search. About 64% fewer tokens. |
 | 🧠 | **Learning loop** | Corrections become rules and fixed bugs go to a log, so mistakes aren't repeated. |
 | 🛡️ | **Safety lines** | No deletes without written OK, messages stay drafts, no live side effects while testing, backup before production writes. |
+| 🧩 | **Pick what you need** | 8 optional categories with sizes. First-run picker, change any time with `/god-mode:setup`. |
 | 🤖 | **9 specialist agents** | Mobile QA, web auditor, SEO + AI visibility, promo films, job hunter, accounts keeper, two reviewers, office manager. |
-| 🎨 | **Design rules** | Color harmonies, 60-30-10, OKLCH shade scales, WCAG contrast ([design-color-rules.md](skills/god-mode/rules/design-color-rules.md)). |
+| 🎨 | **Design rules** | Color harmonies, 60-30-10, OKLCH shade scales, WCAG contrast ([design-color-rules.md](plugins/god-mode/skills/god-mode/rules/design-color-rules.md)). |
 | 🌍 | **Arabic + English** | Skills and triggers work in both languages. |
 
 ---
@@ -149,7 +171,7 @@ flowchart LR
     K -.next session.-> B
 ```
 
-1. **Route.** Pick one row from the router table in [`skills/god-mode/SKILL.md`](skills/god-mode/SKILL.md).
+1. **Route.** Pick one row from the router table in [`plugins/god-mode/skills/god-mode/SKILL.md`](plugins/god-mode/skills/god-mode/SKILL.md).
 2. **Rules.** Load the standing rules once per session.
 3. **Work cheaply.** Index first, targeted search, parallel tool calls, no repeated reads.
 4. **Verify.** Check the live state (git remote, deployed version, DB value) before changing anything.
@@ -160,90 +182,146 @@ flowchart LR
 
 ## 🗺️ Skill map
 
+What each one does, what to say to use it, and what it will ask you first.
+
+<!-- SKILLMAP:START -->
 ```mermaid
 mindmap
   root((God Mode))
+    Core
+      god-mode
+      setup
+      standing-rules
+      design-color-rules
     Web & Design
       clone-website
       color-palette-swap
-      design-color-rules
       mobile-ui-reviewer
       dashboard-reviewer
-    Engineering & QA
+    QA & Audit
       mobile-app-qa
       web-auditor
-      api-anything
-    Growth & Content
+    SEO & Writing
       seo-ai-visibility
-      promo-film-maker
       humanizer
       saudi-news-curator
+    Video & Marketing
+      promo-film-maker
     Career
       cv-optimizer
       job-hunter
       accounts-keeper
+    Automation & Agents
+      api-anything
+      office-manager
     Study
       lecture-summary-pdf
-    Spaces
+    Interior Design
       interior-design-engineer
-    Coordination
-      office-manager
 ```
 
+
+
 <details open>
-<summary><b>🎨 Web & Design</b></summary>
+<summary><b>🧭 Core (always installed) · 20 KB</b></summary>
 
-| Name | Type | Use it for |
-|---|---|---|
-| [clone-website](skills/clone-website) | skill | Rebuild an existing site section by section (assets, CSS, content) in Next.js |
-| [color-palette-swap](skills/color-palette-swap) | skill | Swap a color palette across a whole codebase safely |
-| [design-color-rules](skills/god-mode/rules/design-color-rules.md) | rules | Harmonies, 60-30-10, OKLCH scales, contrast |
-| [mobile-ui-reviewer](agents/mobile-ui-reviewer.md) | agent | Phone-width review: layout, touch, type, contrast, motion, speed |
-| [dashboard-reviewer](agents/dashboard-reviewer.md) | agent | Critical review of admin, analytics or smart-home dashboards |
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [god-mode](plugins/god-mode/skills/god-mode) | skill | "/god-mode build me a landing page" | Picks the one skill or agent that fits and applies the working rules and token protocol | nothing |
+| [setup](plugins/god-mode/skills/setup) | skill | "/god-mode:setup" | The category picker: add or remove categories | which categories you want |
+| [standing-rules](plugins/god-mode/skills/god-mode/rules/standing-rules.md) | rules | "(loaded automatically)" | Safety and quality rules: no deletes without OK, drafts not sends, backups before production writes | nothing |
+| [design-color-rules](plugins/god-mode/skills/god-mode/rules/design-color-rules.md) | rules | "pick a palette for my app" | Harmonies, 60-30-10, OKLCH shade scales, WCAG contrast checks | your brand color, if any |
 </details>
 
 <details>
-<summary><b>🛠️ Engineering & QA</b></summary>
+<summary><b>🎨 Web & Design · 52 KB</b> (<code>gm-web-design</code>)</summary>
 
-| Name | Type | Use it for |
-|---|---|---|
-| [mobile-app-qa](agents/mobile-app-qa.md) | agent | App QA on Android/iOS, misuse scenarios, GO/NO-GO bug reports |
-| [web-auditor](agents/web-auditor.md) | agent | Stuck loaders, CORS, 500s, slow pages, fixed with backup + rollback |
-| [api-anything](skills/api-anything) | skill (MIT) | Get data from a site through its own requests |
+Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [clone-website](plugins/gm-web-design/skills/clone-website) | skill | "clone https://example.com into Next.js" | A working Next.js copy, built section by section with its assets and styles | the URL(s), and whether you own the site or have the right to copy it |
+| [color-palette-swap](plugins/gm-web-design/skills/color-palette-swap) | skill | "recolor this design with this palette (attach both images)" | Two recolored PNGs: a light-to-light match and an aesthetic alternative | the design file (PSD/PNG/JPG) and the palette image |
+| [mobile-ui-reviewer](plugins/gm-web-design/agents/mobile-ui-reviewer.md) | agent | "review my site on mobile" | Scores per area plus exact CSS/HTML fixes, checked at 360–430px | the URL, which pages, and whether to fix or only report |
+| [dashboard-reviewer](plugins/gm-web-design/agents/dashboard-reviewer.md) | agent | "review my admin dashboard" | Scores and the top 3 fixes for layout, data correctness and design consistency | the URL or screenshots, and who uses it for what |
 </details>
 
 <details>
-<summary><b>📈 Growth & Content</b></summary>
+<summary><b>🛠️ QA & Audit · 4.4 KB</b> (<code>gm-qa-audit</code>)</summary>
 
-| Name | Type | Use it for |
-|---|---|---|
-| [seo-ai-visibility](agents/seo-ai-visibility.md) | agent | SEO + AI-crawler visibility: robots, llms.txt, schema, hreflang |
-| [promo-film-maker](agents/promo-film-maker.md) | agent | Promo films made in code + launch copy |
-| [humanizer](skills/humanizer) | skill (MIT) | Remove AI tells from writing |
-| [saudi-news-curator](skills/saudi-news-curator) | skill | Verified bilingual Saudi/Gulf news articles with SEO and hashtags |
+Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [mobile-app-qa](plugins/gm-qa-audit/agents/mobile-app-qa.md) | agent | "test this build before I upload it" | A bug report with steps and evidence, and a GO / NO-GO verdict | the app, the platforms, what changed, and a test server and account |
+| [web-auditor](plugins/gm-qa-audit/agents/web-auditor.md) | agent | "my site is stuck loading / shows 500" | Cause, fix, proof it works, and the rollback command | the URL, the symptom, where the code is, and whether to fix or only report |
 </details>
 
 <details>
-<summary><b>💼 Career</b></summary>
+<summary><b>📈 SEO & Writing · 46 KB</b> (<code>gm-seo-writing</code>)</summary>
 
-| Name | Type | Use it for |
-|---|---|---|
-| [cv-optimizer](skills/cv-optimizer) | skill | CV + LinkedIn analysis, ATS, interview prep (Arabic + English) |
-| [job-hunter](agents/job-hunter.md) | agent | Find jobs, honest fit check, tailored CV + researched company note |
-| [accounts-keeper](agents/accounts-keeper.md) | agent | Job-site accounts registry. Never touches passwords |
+Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [seo-ai-visibility](plugins/gm-seo-writing/agents/seo-ai-visibility.md) | agent | "why isn't my site showing on Google or in ChatGPT?" | A ranked fix list: robots, sitemap, llms.txt, schema, hreflang, speed | the site URL, languages, the pages that matter, and whether to allow AI crawlers |
+| [humanizer](plugins/gm-seo-writing/skills/humanizer) | skill | "make this sound less like AI (paste text)" | The same text with AI tells removed and every fact kept | nothing beyond the text |
+| [saudi-news-curator](plugins/gm-seo-writing/skills/saudi-news-curator) | skill | "هات تريند السعودية النهارده and write an SEO article" | A verified Arabic + English article with SEO title, meta and hashtags | your site URL (once) and the topic or section |
 </details>
 
 <details>
-<summary><b>📚 Study, Spaces & Coordination</b></summary>
+<summary><b>🎬 Video & Marketing · 2.7 KB</b> (<code>gm-video</code>)</summary>
 
-| Name | Type | Use it for |
-|---|---|---|
-| [lecture-summary-pdf](skills/lecture-summary-pdf) | skill | Lecture PDF to an A4 summary with mind maps and MCQs |
-| [interior-design-engineer](skills/interior-design-engineer) | skill | Room design, furniture plans, BOQ |
-| [office-manager](agents/office-manager.md) | agent | Splits broad tasks across the right specialists |
+Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [promo-film-maker](plugins/gm-video/agents/promo-film-maker.md) | agent | "make a 30-second promo for my app" | A storyboard to approve, the rendered video, then caption, hashtags and store text | the product, the platform (9:16 or 16:9), length, language, and the one message to remember |
 </details>
 
-Recommended companions (not bundled, each under its own license): see [EXTERNAL_SKILLS.md](EXTERNAL_SKILLS.md).
+<details>
+<summary><b>💼 Career · 28 KB</b> (<code>gm-career</code>)</summary>
+
+Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [cv-optimizer](plugins/gm-career/skills/cv-optimizer) | skill | "analyze my CV for this job (paste both)" | Line-by-line fixes, an ATS keyword check, and before/after rewrites | your full CV, the job description, years, top achievements with numbers, and your target market |
+| [job-hunter](plugins/gm-career/agents/job-hunter.md) | agent | "apply to this job (paste the post)" | A fit verdict, a tailored CV, form answers and an email draft, logged | your profile once (CV, skills, roles, locations, salary range) and any number it can't find |
+| [accounts-keeper](plugins/gm-career/agents/accounts-keeper.md) | agent | "which job sites am I registered on?" | A registry of your job-site accounts and their status | which sites, and which Google account to use. You type passwords and codes |
+</details>
+
+<details>
+<summary><b>🤖 Automation & Agents · 11 KB</b> (<code>gm-automation</code>)</summary>
+
+Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [api-anything](plugins/gm-automation/skills/api-anything) | skill | "get the flight prices from A to B on <site>" | The data straight from the site's own requests, or a reusable operation | the site and what you want from it; you sign in yourself |
+| [office-manager](plugins/gm-automation/agents/office-manager.md) | agent | "someone handle the launch checklist" | The task split across the right agents, with a combined report | one question at most, when a decision is yours |
+</details>
+
+<details>
+<summary><b>📚 Study · 6.1 KB</b> (<code>gm-study</code>)</summary>
+
+Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [lecture-summary-pdf](plugins/gm-study/skills/lecture-summary-pdf) | skill | "لخّص المحاضرة دي (attach the PDF)" | An A4 summary PDF with mind maps, diagrams, exam traps, MCQ + True/False and an answer key | how many questions, whether you want a recap in your language, and pages to skip |
+</details>
+
+<details>
+<summary><b>🛋️ Interior Design · 13 KB</b> (<code>gm-interior</code>)</summary>
+
+Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [interior-design-engineer](plugins/gm-interior/skills/interior-design-engineer) | skill | "design my living room 4×5 m (attach photos)" | Layout options, furniture and lighting plan, BOQ, and a mood board | room photos and measurements, inspiration images, budget and style |
+</details>
+<!-- SKILLMAP:END -->
 
 ---
 
@@ -251,12 +329,13 @@ Recommended companions (not bundled, each under its own license): see [EXTERNAL_
 
 ```
 god-mode/
-├── .claude-plugin/          # plugin + marketplace manifests
-├── skills/
-│   ├── god-mode/            # the router: SKILL.md + rules/
-│   └── …8 skills
-├── agents/                  # 9 specialist agents
-├── tools/token_stats.py     # build stats from an OpenWolf ledger
+├── .claude-plugin/marketplace.json   # lists the core + 8 categories
+├── plugins/
+│   ├── god-mode/            # core: router (SKILL.md + rules/), setup, session hook
+│   └── gm-*/                # 8 optional categories (skills + agents)
+├── categories.json          # category names and descriptions (source of truth)
+├── catalog.generated.*      # sizes and contents, built by tools/build_catalog.py
+├── tools/                   # build_catalog.py, token_stats.py
 ├── stats/token-stats.json
 ├── EXTERNAL_SKILLS.md
 ├── CHANGELOG.md

@@ -1,0 +1,284 @@
+{
+  "version": "2.0.0",
+  "marketplace": "god-mode",
+  "core": {
+    "bytes": 20279,
+    "size": "20 KB"
+  },
+  "openwolf": {
+    "package": "openwolf",
+    "version": "2.5.3",
+    "approx_download": "≈3 MB (npm)"
+  },
+  "categories": [
+    {
+      "id": "gm-web-design",
+      "name": "Web & Design",
+      "emoji": "🎨",
+      "description": "Copy a website you like into a Next.js project, recolor a design image with a new palette, and get a scored review of a site or dashboard on a phone.",
+      "extras": null,
+      "skills": [
+        "clone-website",
+        "color-palette-swap"
+      ],
+      "agents": [
+        "dashboard-reviewer",
+        "mobile-ui-reviewer"
+      ],
+      "items": [
+        {
+          "name": "clone-website",
+          "type": "skill",
+          "say": "clone https://example.com into Next.js",
+          "get": "A working Next.js copy, built section by section with its assets and styles",
+          "asks": "the URL(s), and whether you own the site or have the right to copy it",
+          "path": "plugins/gm-web-design/skills/clone-website"
+        },
+        {
+          "name": "color-palette-swap",
+          "type": "skill",
+          "say": "recolor this design with this palette (attach both images)",
+          "get": "Two recolored PNGs: a light-to-light match and an aesthetic alternative",
+          "asks": "the design file (PSD/PNG/JPG) and the palette image",
+          "path": "plugins/gm-web-design/skills/color-palette-swap"
+        },
+        {
+          "name": "mobile-ui-reviewer",
+          "type": "agent",
+          "say": "review my site on mobile",
+          "get": "Scores per area plus exact CSS/HTML fixes, checked at 360–430px",
+          "asks": "the URL, which pages, and whether to fix or only report",
+          "path": "plugins/gm-web-design/agents/mobile-ui-reviewer.md"
+        },
+        {
+          "name": "dashboard-reviewer",
+          "type": "agent",
+          "say": "review my admin dashboard",
+          "get": "Scores and the top 3 fixes for layout, data correctness and design consistency",
+          "asks": "the URL or screenshots, and who uses it for what",
+          "path": "plugins/gm-web-design/agents/dashboard-reviewer.md"
+        }
+      ],
+      "bytes": 53169,
+      "size": "52 KB"
+    },
+    {
+      "id": "gm-qa-audit",
+      "name": "QA & Audit",
+      "emoji": "🛠️",
+      "description": "Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.",
+      "extras": null,
+      "skills": [],
+      "agents": [
+        "mobile-app-qa",
+        "web-auditor"
+      ],
+      "items": [
+        {
+          "name": "mobile-app-qa",
+          "type": "agent",
+          "say": "test this build before I upload it",
+          "get": "A bug report with steps and evidence, and a GO / NO-GO verdict",
+          "asks": "the app, the platforms, what changed, and a test server and account",
+          "path": "plugins/gm-qa-audit/agents/mobile-app-qa.md"
+        },
+        {
+          "name": "web-auditor",
+          "type": "agent",
+          "say": "my site is stuck loading / shows 500",
+          "get": "Cause, fix, proof it works, and the rollback command",
+          "asks": "the URL, the symptom, where the code is, and whether to fix or only report",
+          "path": "plugins/gm-qa-audit/agents/web-auditor.md"
+        }
+      ],
+      "bytes": 4479,
+      "size": "4.4 KB"
+    },
+    {
+      "id": "gm-seo-writing",
+      "name": "SEO & Writing",
+      "emoji": "📈",
+      "description": "Get found on Google and in AI answers, make AI-sounding text read like a person wrote it, and write bilingual Saudi/Gulf news articles.",
+      "extras": null,
+      "skills": [
+        "humanizer",
+        "saudi-news-curator"
+      ],
+      "agents": [
+        "seo-ai-visibility"
+      ],
+      "items": [
+        {
+          "name": "seo-ai-visibility",
+          "type": "agent",
+          "say": "why isn't my site showing on Google or in ChatGPT?",
+          "get": "A ranked fix list: robots, sitemap, llms.txt, schema, hreflang, speed",
+          "asks": "the site URL, languages, the pages that matter, and whether to allow AI crawlers",
+          "path": "plugins/gm-seo-writing/agents/seo-ai-visibility.md"
+        },
+        {
+          "name": "humanizer",
+          "type": "skill",
+          "say": "make this sound less like AI (paste text)",
+          "get": "The same text with AI tells removed and every fact kept",
+          "asks": "nothing beyond the text",
+          "path": "plugins/gm-seo-writing/skills/humanizer"
+        },
+        {
+          "name": "saudi-news-curator",
+          "type": "skill",
+          "say": "هات تريند السعودية النهارده and write an SEO article",
+          "get": "A verified Arabic + English article with SEO title, meta and hashtags",
+          "asks": "your site URL (once) and the topic or section",
+          "path": "plugins/gm-seo-writing/skills/saudi-news-curator"
+        }
+      ],
+      "bytes": 47314,
+      "size": "46 KB"
+    },
+    {
+      "id": "gm-video",
+      "name": "Video & Marketing",
+      "emoji": "🎬",
+      "description": "Turn a product or a raw recording into a promo film, a trailer or vertical shorts with captions, plus the post and store text to go with it.",
+      "extras": "Optional video toolkit (ffmpeg, faster-whisper, video tools) ≈1 GB, offered separately and only if you say yes.",
+      "skills": [],
+      "agents": [
+        "promo-film-maker"
+      ],
+      "items": [
+        {
+          "name": "promo-film-maker",
+          "type": "agent",
+          "say": "make a 30-second promo for my app",
+          "get": "A storyboard to approve, the rendered video, then caption, hashtags and store text",
+          "asks": "the product, the platform (9:16 or 16:9), length, language, and the one message to remember",
+          "path": "plugins/gm-video/agents/promo-film-maker.md"
+        }
+      ],
+      "bytes": 2756,
+      "size": "2.7 KB"
+    },
+    {
+      "id": "gm-career",
+      "name": "Career",
+      "emoji": "💼",
+      "description": "Fix your CV and LinkedIn for ATS, check which jobs you really fit, and get a tailored CV and application drafts for each one. You send them.",
+      "extras": null,
+      "skills": [
+        "cv-optimizer"
+      ],
+      "agents": [
+        "accounts-keeper",
+        "job-hunter"
+      ],
+      "items": [
+        {
+          "name": "cv-optimizer",
+          "type": "skill",
+          "say": "analyze my CV for this job (paste both)",
+          "get": "Line-by-line fixes, an ATS keyword check, and before/after rewrites",
+          "asks": "your full CV, the job description, years, top achievements with numbers, and your target market",
+          "path": "plugins/gm-career/skills/cv-optimizer"
+        },
+        {
+          "name": "job-hunter",
+          "type": "agent",
+          "say": "apply to this job (paste the post)",
+          "get": "A fit verdict, a tailored CV, form answers and an email draft, logged",
+          "asks": "your profile once (CV, skills, roles, locations, salary range) and any number it can't find",
+          "path": "plugins/gm-career/agents/job-hunter.md"
+        },
+        {
+          "name": "accounts-keeper",
+          "type": "agent",
+          "say": "which job sites am I registered on?",
+          "get": "A registry of your job-site accounts and their status",
+          "asks": "which sites, and which Google account to use. You type passwords and codes",
+          "path": "plugins/gm-career/agents/accounts-keeper.md"
+        }
+      ],
+      "bytes": 29074,
+      "size": "28 KB"
+    },
+    {
+      "id": "gm-automation",
+      "name": "Automation & Agents",
+      "emoji": "🤖",
+      "description": "Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.",
+      "extras": null,
+      "skills": [
+        "api-anything"
+      ],
+      "agents": [
+        "office-manager"
+      ],
+      "items": [
+        {
+          "name": "api-anything",
+          "type": "skill",
+          "say": "get the flight prices from A to B on <site>",
+          "get": "The data straight from the site's own requests, or a reusable operation",
+          "asks": "the site and what you want from it; you sign in yourself",
+          "path": "plugins/gm-automation/skills/api-anything"
+        },
+        {
+          "name": "office-manager",
+          "type": "agent",
+          "say": "someone handle the launch checklist",
+          "get": "The task split across the right agents, with a combined report",
+          "asks": "one question at most, when a decision is yours",
+          "path": "plugins/gm-automation/agents/office-manager.md"
+        }
+      ],
+      "bytes": 11466,
+      "size": "11 KB"
+    },
+    {
+      "id": "gm-study",
+      "name": "Study",
+      "emoji": "📚",
+      "description": "Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers.",
+      "extras": null,
+      "skills": [
+        "lecture-summary-pdf"
+      ],
+      "agents": [],
+      "items": [
+        {
+          "name": "lecture-summary-pdf",
+          "type": "skill",
+          "say": "لخّص المحاضرة دي (attach the PDF)",
+          "get": "An A4 summary PDF with mind maps, diagrams, exam traps, MCQ + True/False and an answer key",
+          "asks": "how many questions, whether you want a recap in your language, and pages to skip",
+          "path": "plugins/gm-study/skills/lecture-summary-pdf"
+        }
+      ],
+      "bytes": 6216,
+      "size": "6.1 KB"
+    },
+    {
+      "id": "gm-interior",
+      "name": "Interior Design",
+      "emoji": "🛋️",
+      "description": "Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board.",
+      "extras": null,
+      "skills": [
+        "interior-design-engineer"
+      ],
+      "agents": [],
+      "items": [
+        {
+          "name": "interior-design-engineer",
+          "type": "skill",
+          "say": "design my living room 4×5 m (attach photos)",
+          "get": "Layout options, furniture and lighting plan, BOQ, and a mood board",
+          "asks": "room photos and measurements, inspiration images, budget and style",
+          "path": "plugins/gm-interior/skills/interior-design-engineer"
+        }
+      ],
+      "bytes": 12894,
+      "size": "13 KB"
+    }
+  ]
+}

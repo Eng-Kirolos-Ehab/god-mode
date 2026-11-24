@@ -1,0 +1,12 @@
+{
+  "name": "gm-qa-audit",
+  "version": "2.0.0",
+  "description": "God Mode · QA & Audit: Test a mobile app before you publish it, or find out why a website is broken or slow, with a backup and rollback for every fix.",
+  "author": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT"
+}
