@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0
+- Router: a tie-break order and a lead-skill table for when several installed skills match the same request.
+- EXTERNAL_SKILLS: engineering skills that work well with the router, and how to add them without extra hooks.
+- README, GitHub and npm descriptions rewritten: what it does, who it is for, what it needs.
+
 ## 2.0.1
 - Removed `saudi-news-curator`. SEO & Writing now has `seo-ai-visibility` and `humanizer`.
 

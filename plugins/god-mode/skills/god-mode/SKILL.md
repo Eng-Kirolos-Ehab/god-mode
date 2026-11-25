@@ -37,6 +37,26 @@ Skills and agents ship in optional categories (the plugin id is in brackets). If
 
 Recommended extras (installed separately; see [EXTERNAL_SKILLS.md](https://github.com/Eng-Kirolos-Ehab/god-mode/blob/main/EXTERNAL_SKILLS.md)): `ui-ux-pro-max` for UI design, `career-ops` for job tracking, Anthropic's `docx`/`xlsx`/`pptx`/`pdf` for office files.
 
+### When several skills match
+
+Other skills you have installed can match the same request. Use this order and load one:
+
+1. The skill the user named.
+2. A skill written for this project (its own folder, or its name in the project's CLAUDE.md).
+3. The most specific skill for the output: a skill for "captions" beats one for "video".
+4. A general skill for the domain.
+
+| Work | Lead | Add only if needed |
+|---|---|---|
+| New UI from nothing | the project's design skill, else `frontend-design` | `ui-ux-pro-max` for palettes, fonts and charts data |
+| Bug or failing test | `systematic-debugging` | `test-driven-development` for the regression test |
+| Check a web app in a browser | `webapp-testing` | `web-auditor` agent when a live site is broken |
+| Postgres or Supabase | `supabase-postgres-best-practices` | none |
+| Large change with several steps | `writing-plans`, then `executing-plans` | none |
+| Before saying "done" | `verification-before-completion` | none |
+
+Process skills (planning, debugging, verification) never replace the user's instructions, and a small task does not need them. Don't load two skills that produce the same thing.
+
 ## 2. Token-saving protocol
 
 1. **Index before reading.** If the project keeps a file index (e.g. `.wolf/anatomy.md`, a README map), check it first. If the description answers the question, don't open the file.

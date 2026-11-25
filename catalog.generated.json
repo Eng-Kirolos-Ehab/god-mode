@@ -1,9 +1,9 @@
 {
-  "version": "2.0.1",
+  "version": "2.1.0",
   "marketplace": "god-mode",
   "core": {
-    "bytes": 20047,
-    "size": "20 KB"
+    "bytes": 21159,
+    "size": "21 KB"
   },
   "openwolf": {
     "package": "openwolf",

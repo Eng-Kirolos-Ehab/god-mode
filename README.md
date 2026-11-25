@@ -1,18 +1,35 @@
 <div align="center">
 
-# ⚡ God Mode
+# God Mode
 
-**A Claude Code plugin with one router skill that picks the right tool for every task. It bundles 8 skills, 9 specialist agents, 20+ standing rules and a token-saving protocol that cut token use by an estimated 64% in real work.**
+**One entry point for Claude Code. God Mode reads your request, loads the one skill or agent that fits, and works under a fixed set of safety and token-saving rules.**
 
-![skills](https://img.shields.io/badge/skills-1_router_+_8-c0392b)
+![version](https://img.shields.io/badge/version-2.1.0-5b3ff0)
+![skills](https://img.shields.io/badge/skills-7_+_router_+_setup-2c3e50)
 ![agents](https://img.shields.io/badge/agents-9-2c3e50)
-![tokens saved](https://img.shields.io/badge/tokens_saved-~287M-27ae60)
-![sessions](https://img.shields.io/badge/sessions-724-8e44ad)
+[![npm](https://img.shields.io/npm/v/kermione?label=npx%20kermione)](https://www.npmjs.com/package/kermione)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-[Install](#-install-one-command) · [العربية](#-بالعربي) · [Features](#-features) · [Token savings](#-token-savings) · [How it works](#-how-it-works) · [Skill map](#-skill-map)
+[What it does](#what-it-does) · [Install](#-install-one-command) · [العربية](#-بالعربي) · [Skill map](#%EF%B8%8F-skill-map) · [How it works](#-how-it-works) · [Token savings](#-token-savings)
 
 </div>
+
+---
+
+## What it does
+
+Claude Code gets harder to steer as you add skills: several match the same request, each one costs context, and the rules you repeat every session are forgotten. God Mode handles those three things.
+
+| Problem | What God Mode does |
+|---|---|
+| Too many skills match one request | A router maps each kind of request to one skill or agent, with a tie-break order when several fit |
+| Context fills up with files and instructions | You install only the categories you use (3 to 52 KB each), and one specialist loads at a time |
+| Risky actions happen too easily | Deletes, sends and production writes need your written OK. Production changes also need a backup and a rollback |
+| The same corrections come back | Corrections become rules, and fixed bugs go to a log that is checked first |
+
+**Who it is for:** developers, designers, founders and students who use Claude Code every day, in English or Arabic.
+
+**What you need:** Claude Code, plus Node 18+ for the one-command install. It needs no API keys, no accounts and no paid services.
 
 ---
 
@@ -68,7 +85,7 @@ Then restart Claude Code. **In your first session, God Mode asks which categorie
 ### Categories
 
 <!-- CATEGORIES:START -->
-The core (20 KB) is always installed. Everything else is optional:
+The core (21 KB) is always installed. Everything else is optional:
 
 | # | Category | Plugin id | Size | What it does for you |
 |---|---|---|---|---|
@@ -102,7 +119,11 @@ Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm
 
 ## 🇪🇬 بالعربي
 
-**God Mode** هي إضافة (plugin) لـ Claude Code فيها كل المهارات والوكلاء والقواعد اللي اتعلمها Claude من شغل حقيقي: تطبيقات موبايل، مواقع، SEO، توظيف، تصميم، ومحتوى.
+**God Mode** نقطة دخول واحدة لـ Claude Code. بيقرا طلبك، ويحمّل المهارة أو الوكيل المناسب بس، ويشتغل بقواعد ثابتة للأمان وتوفير التوكنز.
+
+- **بيحل إيه؟** لما المهارات تكتر، أكتر من واحدة بتتفعّل لنفس الطلب وبتملى السياق. God Mode بيحدد واحدة، وبترتيب أولوية واضح.
+- **بتنزّل إيه؟** الأقسام اللي محتاجها بس: تصميم ومواقع، اختبار، SEO وكتابة، فيديو، توظيف، أتمتة، مذاكرة، وديكور.
+- **محتاج إيه؟** Claude Code و Node 18 أو أحدث. من غير API ومن غير اشتراكات إضافية.
 
 **التثبيت بأمر واحد في الـ terminal:**
 ```bash
@@ -129,7 +150,7 @@ irm https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.ps1 | i
 
 - **موزّع ذكي:** بيقرأ طلبك ويختار المهارة أو الوكيل المناسب بس، من غير ما يحمّل كل حاجة.
 - **قواعد ثابتة:** كل قاعدة جت من تصحيح أو مشكلة حصلت فعلًا في الشغل.
-- **توفير التوكينز:** بروتوكول قراءة ذكي وفّر حوالي **287 مليون توكن (64%)** على مدار 724 جلسة.
+- **توفير التوكينز:** بروتوكول قراءة ذكي. تقدير OpenWolf في شغلنا: حوالي 64% توفير على مدار 724 جلسة، ورقمك هيختلف.
 - **أمان:** ممنوع المسح من غير إذن مكتوب، الإيميلات بتفضل مسودات، ومفيش أي حاجة بتتنفذ على بيئة حقيقية وقت الاختبار.
 
 ---
@@ -140,7 +161,7 @@ irm https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.ps1 | i
 |---|---|---|
 | 🧭 | **Router** | Maps a request to the one skill or agent that fits, so only that one loads. |
 | 📏 | **Standing rules** | 20+ rules, each from a real correction or incident ([standing-rules.md](plugins/god-mode/skills/god-mode/rules/standing-rules.md)). |
-| 💰 | **Token protocol** | Index-first reading, no repeated reads, targeted search. About 64% fewer tokens. |
+| 💰 | **Token protocol** | Index-first reading, no repeated reads, targeted search. About 64% fewer tokens in our own work, by OpenWolf's estimate. |
 | 🧠 | **Learning loop** | Corrections become rules and fixed bugs go to a log, so mistakes aren't repeated. |
 | 🛡️ | **Safety lines** | No deletes without written OK, messages stay drafts, no live side effects while testing, backup before production writes. |
 | 🧩 | **Pick what you need** | 8 optional categories with sizes. First-run picker, change any time with `/god-mode:setup`. |
@@ -266,7 +287,7 @@ mindmap
 
 
 <details open>
-<summary><b>🧭 Core (always installed) · 20 KB</b></summary>
+<summary><b>🧭 Core (always installed) · 21 KB</b></summary>
 
 | Name | Type | Say something like | You get | It asks you for |
 |---|---|---|---|---|

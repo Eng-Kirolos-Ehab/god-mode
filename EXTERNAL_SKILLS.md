@@ -36,3 +36,16 @@ God Mode recommends these but does not copy them. Each stays under its own licen
 | rust-analyzer-lsp | Engineering | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | `/plugin install rust-analyzer-lsp@claude-plugins-official` |
 | docx / xlsx / pptx / pdf | Docs | [anthropics/skills](https://github.com/anthropics/skills) | built into Claude apps |
 | OpenWolf | Token protocol | [openwolf on npm](https://www.npmjs.com/package/openwolf) | `npx openwolf init` |
+
+## Engineering skills
+
+Copy only the folders you want into `~/.claude/skills/`.
+
+| Skill | Source | Use it for |
+|---|---|---|
+| `supabase-postgres-best-practices` | [supabase/agent-skills](https://github.com/supabase/agent-skills) | schema, RLS, indexes, slow queries |
+| `webapp-testing` | [anthropics/skills](https://github.com/anthropics/skills) | testing a local web app with Playwright (needs Python Playwright) |
+| `frontend-design` | [anthropics/skills](https://github.com/anthropics/skills) | new UI with its own visual direction |
+| `systematic-debugging`, `verification-before-completion`, `writing-plans`, `executing-plans`, `test-driven-development` | [obra/superpowers](https://github.com/obra/superpowers) | engineering process |
+
+The full superpowers plugin also adds a session hook that asks Claude to check for a skill before every reply. It overlaps with this router, so copy the single skills instead. Read each skill before you install it.
