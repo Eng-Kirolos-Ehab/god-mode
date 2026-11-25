@@ -1,6 +1,6 @@
 {
   "name": "god-mode",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "God Mode core: router skill, standing rules, token-saving protocol and a first-run setup that lets you pick which categories to install. Installs OpenWolf automatically.",
   "author": {
     "name": "Kirolos Ehab",

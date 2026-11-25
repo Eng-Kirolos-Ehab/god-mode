@@ -1,5 +1,5 @@
 {
-  "version": "2.0.1",
+  "version": "2.1.0",
   "marketplace": "god-mode",
   "openwolf": { "package": "openwolf", "version": "2.5.3", "approx_download": "≈3 MB (npm)" },
   "core": {

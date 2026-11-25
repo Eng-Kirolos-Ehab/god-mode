@@ -1,6 +1,6 @@
 {
   "name": "gm-automation",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "God Mode · Automation & Agents: Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists.",
   "author": {
     "name": "Kirolos Ehab",

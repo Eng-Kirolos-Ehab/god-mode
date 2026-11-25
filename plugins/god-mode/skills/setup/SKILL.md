@@ -23,7 +23,7 @@ God Mode is a small core (this setup, the router, the rules) plus optional **cat
 | 7 | **Study** (`gm-study`) | 6.0 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. | "لخّص المحاضرة دي (attach the PDF)" | — |
 | 8 | **Interior Design** (`gm-interior`) | 13 KB | Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board. | "design my living room 4×5 m (attach photos)" | — |
 
-Core (always installed): 20 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
+Core (always installed): 21 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
 <!-- CATALOG:END -->
 
 ## Steps
