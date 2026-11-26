@@ -119,6 +119,15 @@ Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm
 
 ---
 
+## 🔄 Update
+
+```bash
+claude plugin marketplace update god-mode
+claude plugin update god-mode@god-mode
+```
+
+Restart Claude Code (or run `/reload-plugins`). Your next session shows a one-time **what's new** note and offers any new categories, and you pick which ones to add.
+
 ## 🇪🇬 بالعربي
 
 **God Mode** نقطة دخول واحدة لـ Claude Code. بيقرا طلبك، ويحمّل المهارة أو الوكيل المناسب بس، ويشتغل بقواعد ثابتة للأمان وتوفير التوكنز.
