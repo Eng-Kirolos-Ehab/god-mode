@@ -1,0 +1,6 @@
+2.2.0
+gm-content gm-business
+- Two new categories: Content & Hooks (gm-content: hook-writer, motion-polish) and Business (gm-business: contract-review).
+- A skill tree in the router: every skill and agent grouped by what you are trying to do.
+- A safety gate for adding outside skills (backup, pinned copy, offline scan with NVIDIA SkillSpector, manual review) in EXTERNAL_SKILLS.md, plus vetted picks: earshot (sound effects), replica-skill (clone and improve an app), Anthropic's claude-code-setup and 11 engineering skills from addyosmani/agent-skills.
+- This 'what's new' note: after an update, God Mode tells you once what changed and offers to add the new categories.

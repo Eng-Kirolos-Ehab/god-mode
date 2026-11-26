@@ -13,6 +13,29 @@ if [ ! -f "$MARK" ]; then
   exit 0
 fi
 
+# 3) Updated since the user last saw a note: show what's new once and offer the new categories.
+NEW_VER=$(grep -o '"version": *"[^"]*"' "$ROOT/.claude-plugin/plugin.json" 2>/dev/null | head -1 | sed 's/.*"\([^"]*\)"$/\1/')
+OLD_VER=$(grep -o '"version": *"[^"]*"' "$MARK" 2>/dev/null | head -1 | sed 's/.*"\([^"]*\)"$/\1/')
+NOTES="$ROOT/whats-new.txt"
+if [ -n "$NEW_VER" ] && [ -f "$NOTES" ] && [ "$NEW_VER" != "$OLD_VER" ]; then
+  NEWER=$(printf '%s\n%s\n' "${OLD_VER:-0}" "$NEW_VER" | sort -t. -k1,1n -k2,2n -k3,3n | tail -1)
+  if [ "$NEWER" = "$NEW_VER" ]; then
+    INSTALLED="$CFG/plugins/installed_plugins.json"
+    ADD=""
+    for id in $(sed -n 2p "$NOTES" | tr -d '\r'); do
+      grep -q "\"$id@god-mode\"" "$INSTALLED" 2>/dev/null || ADD="$ADD $id"
+    done
+    echo "[God Mode] Updated from ${OLD_VER:-an older version} to $NEW_VER. What's new:"
+    sed -n '3,$p' "$NOTES" | tr -d '\r'
+    if [ -n "$ADD" ]; then
+      echo "New categories the user doesn't have yet:$ADD. In your first reply, tell the user in 2-3 short lines (their language) what's new, then ask with AskUserQuestion (multiSelect, one option per new category with its description and size from the god-mode:setup catalog, plus 'Not now') which to add. Install each pick with: claude plugin install <id>@god-mode."
+    else
+      echo "In your first reply, tell the user in 2-3 short lines (their language) what's new."
+    fi
+    echo "Then set \"version\" to \"$NEW_VER\" in $MARK (keep its other keys), even if they pick nothing, so this note is shown only once. If the user's first message is urgent, answer it first."
+  fi
+fi
+
 DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 if grep -q '"openwolf": *"auto"' "$MARK" 2>/dev/null \
    && [ -d "$DIR/.git" ] && [ ! -d "$DIR/.wolf" ] && [ "$DIR" != "$HOME" ]; then

@@ -49,3 +49,27 @@ Copy only the folders you want into `~/.claude/skills/`.
 | `systematic-debugging`, `verification-before-completion`, `writing-plans`, `executing-plans`, `test-driven-development` | [obra/superpowers](https://github.com/obra/superpowers) | engineering process |
 
 The full superpowers plugin also adds a session hook that asks Claude to check for a skill before every reply. It overlaps with this router, so copy the single skills instead. Read each skill before you install it.
+
+## The safety gate (use it for every outside skill)
+
+Added in 2.2.0. It runs in order, and you stop at the first failure.
+
+1. **Back up** your skills folder, plugins folder and settings (`tar -czf backup.tgz ~/.claude/skills ~/.claude/plugins ~/.claude/settings.json`). In Git Bash, use `/c/...` paths or `--force-local`, because `tar` reads `C:/...` as a remote host.
+2. **Pin a copy:** `git clone --depth 1` into a quarantine folder, and note the commit.
+3. **Scan offline** with [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector) (Apache-2.0): `pip install skillspector` in its own virtual environment, then `skillspector scan <folder> --recursive --no-llm --format json > report.json`. `--no-llm` keeps everything on your machine. On Windows, leave out `--output` and redirect stdout instead.
+4. **Read where each finding is.** The scanner is strict: docs, tests and benchmarks that mention `.env` or API keys score CRITICAL even in official plugins. What matters is code that runs at use time, such as network calls, hooks, edits to `settings.json` or the status line, or reading your chat transcripts.
+5. **Check for overlap.** A skill with the same name, or one that does the same job as one you have, is a "no". Every description you add loads into every session.
+6. **Install in the narrowest scope:** a single skill folder before a whole plugin, and `--scope local` for a trial. Then confirm it loads, and write down the command that removes it.
+
+## Vetted in 2.2.0
+
+These passed the gate above. Commits were reviewed in Nov 2026.
+
+| Name | Source | What it adds | Notes |
+|---|---|---|---|
+| SkillSpector | [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) | the scanner used by the gate | a tool, not a skill; Python 3.12–3.13 |
+| earshot | [Leonxlnx/earshot](https://github.com/Leonxlnx/earshot) (MIT) | sound effects from words, a bank aimed at picture, loudness measurements; used by `motion-polish` | `pip install` in its own venv, plus `librosa` for `measure`. The `listen` extra pulls torch (~1 GB) and is optional. Its MCP server is optional too, and skipping it saves tokens. The Gemini critique uploads audio, so use it only by choice |
+| replica-skill | [Jakeschincariol/replica-skill](https://github.com/Jakeschincariol/replica-skill) (MIT) | 11 skills to clone an app and improve it from its users' reviews | text-only skills, no hooks |
+| claude-code-setup | Anthropic, in `claude-plugins-official` | recommends hooks, skills, MCP servers and subagents for a codebase (read-only) | `claude plugin install claude-code-setup@claude-plugins-official` |
+| agent-skills (pick only these) | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) (MIT) | `security-and-hardening`, `performance-optimization`, `accessibility-engineering`, `api-and-interface-design`, `ci-cd-and-automation`, `observability-and-instrumentation`, `documentation-and-adrs`, `deprecation-and-migration`, `doubt-driven-development`, `idea-refine`, `shipping-and-launch` | Copy single folders. Skip its `test-driven-development`, which has the same name as superpowers'. Skip the debugging, review, planning, simplification, frontend and router skills too, because God Mode and superpowers cover them. `doubt-driven-development` suggests sending code to other model CLIs; keep the review inside Claude if your code is private |
+| Ponytail (optional) | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (MIT) | "write the least code that works" mode, plus a cost board | Adds 3 hooks to every session (start, prompt, subagent) and reads your transcripts locally to compute cost. Its webhook is off unless you set one. It will offer to change your status line. Try it with `--scope local` in one project first |

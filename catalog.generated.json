@@ -1,15 +1,21 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "marketplace": "god-mode",
   "core": {
-    "bytes": 21159,
-    "size": "21 KB"
+    "bytes": 25864,
+    "size": "25 KB"
   },
   "openwolf": {
     "package": "openwolf",
     "version": "2.5.3",
     "approx_download": "≈3 MB (npm)"
   },
+  "whats_new": [
+    "Two new categories: Content & Hooks (gm-content: hook-writer, motion-polish) and Business (gm-business: contract-review).",
+    "A skill tree in the router: every skill and agent grouped by what you are trying to do.",
+    "A safety gate for adding outside skills (backup, pinned copy, offline scan with NVIDIA SkillSpector, manual review) in EXTERNAL_SKILLS.md, plus vetted picks: earshot (sound effects), replica-skill (clone and improve an app), Anthropic's claude-code-setup and 11 engineering skills from addyosmani/agent-skills.",
+    "This 'what's new' note: after an update, God Mode tells you once what changed and offers to add the new categories."
+  ],
   "categories": [
     {
       "id": "gm-web-design",
@@ -60,7 +66,8 @@
         }
       ],
       "bytes": 53121,
-      "size": "52 KB"
+      "size": "52 KB",
+      "new_in": null
     },
     {
       "id": "gm-qa-audit",
@@ -92,7 +99,8 @@
         }
       ],
       "bytes": 4413,
-      "size": "4.3 KB"
+      "size": "4.3 KB",
+      "new_in": null
     },
     {
       "id": "gm-seo-writing",
@@ -125,7 +133,8 @@
         }
       ],
       "bytes": 35489,
-      "size": "35 KB"
+      "size": "35 KB",
+      "new_in": null
     },
     {
       "id": "gm-video",
@@ -148,7 +157,8 @@
         }
       ],
       "bytes": 2756,
-      "size": "2.7 KB"
+      "size": "2.7 KB",
+      "new_in": null
     },
     {
       "id": "gm-career",
@@ -190,7 +200,8 @@
         }
       ],
       "bytes": 29036,
-      "size": "28 KB"
+      "size": "28 KB",
+      "new_in": null
     },
     {
       "id": "gm-automation",
@@ -223,7 +234,8 @@
         }
       ],
       "bytes": 11466,
-      "size": "11 KB"
+      "size": "11 KB",
+      "new_in": null
     },
     {
       "id": "gm-study",
@@ -246,7 +258,8 @@
         }
       ],
       "bytes": 6146,
-      "size": "6.0 KB"
+      "size": "6.0 KB",
+      "new_in": null
     },
     {
       "id": "gm-interior",
@@ -269,7 +282,65 @@
         }
       ],
       "bytes": 12894,
-      "size": "13 KB"
+      "size": "13 KB",
+      "new_in": null
+    },
+    {
+      "id": "gm-content",
+      "name": "Content & Hooks",
+      "emoji": "🪝",
+      "description": "Write scroll-stopping hooks, titles and 3-column scripts for reels and shorts, then turn the approved script into a polished motion video with sound effects on the beat. Handles Arabic and other right-to-left text.",
+      "extras": "Optional: earshot for sound effects (Python, CPU only); a video renderer such as HyperFrames or Remotion.",
+      "skills": [
+        "hook-writer",
+        "motion-polish"
+      ],
+      "agents": [],
+      "items": [
+        {
+          "name": "hook-writer",
+          "type": "skill",
+          "say": "write 5 hooks and a 20-second reel script for my app",
+          "get": "The 2 best hooks with scores, a title + cover brief, and a script table (words | on screen | sound)",
+          "asks": "the product facts, platform, length, language, and your brand voice once",
+          "path": "plugins/gm-content/skills/hook-writer"
+        },
+        {
+          "name": "motion-polish",
+          "type": "skill",
+          "say": "animate this approved script as a 9:16 reel",
+          "get": "A rendered MP4 with a style preset, beat-synced cuts, sound effects, and a self-review contact sheet",
+          "asks": "the approved script, format, brand color, logo and real screenshots",
+          "path": "plugins/gm-content/skills/motion-polish"
+        }
+      ],
+      "bytes": 30282,
+      "size": "30 KB",
+      "new_in": "2.2.0"
+    },
+    {
+      "id": "gm-business",
+      "name": "Business",
+      "emoji": "📑",
+      "description": "Read a contract, offer or scope document before you sign: every obligation with its date, the risky clauses ranked, the questions to ask and the wording to request.",
+      "extras": null,
+      "skills": [
+        "contract-review"
+      ],
+      "agents": [],
+      "items": [
+        {
+          "name": "contract-review",
+          "type": "skill",
+          "say": "review this contract before I sign (paste it)",
+          "get": "Obligations table, risky clauses with safer wording, missing clauses, questions, and a sign / change / don't-sign verdict",
+          "asks": "which side you are on and what was agreed verbally",
+          "path": "plugins/gm-business/skills/contract-review"
+        }
+      ],
+      "bytes": 3340,
+      "size": "3.3 KB",
+      "new_in": "2.2.0"
     }
   ]
 }

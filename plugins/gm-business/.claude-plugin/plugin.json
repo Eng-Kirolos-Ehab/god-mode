@@ -1,0 +1,12 @@
+{
+  "name": "gm-business",
+  "version": "2.2.0",
+  "description": "God Mode · Business: Read a contract, offer or scope document before you sign: every obligation with its date, the risky clauses ranked, the questions to ask and the wording to request.",
+  "author": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT"
+}
