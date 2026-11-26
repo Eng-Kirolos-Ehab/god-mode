@@ -22,18 +22,24 @@ God Mode is a small core (this setup, the router, the rules) plus optional **cat
 | 6 | **Automation & Agents** (`gm-automation`) | 11 KB | Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists. | "get the flight prices from A to B on <site>" · "someone handle the launch checklist" | — |
 | 7 | **Study** (`gm-study`) | 6.0 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. | "لخّص المحاضرة دي (attach the PDF)" | — |
 | 8 | **Interior Design** (`gm-interior`) | 13 KB | Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board. | "design my living room 4×5 m (attach photos)" | — |
+| 9 | **Content & Hooks** 🆕 (`gm-content`) | 30 KB | Write scroll-stopping hooks, titles and 3-column scripts for reels and shorts, then turn the approved script into a polished motion video with sound effects on the beat. Handles Arabic and other right-to-left text. | "write 5 hooks and a 20-second reel script for my app" · "animate this approved script as a 9:16 reel" | Optional: earshot for sound effects (Python, CPU only); a video renderer such as HyperFrames or Remotion. |
+| 10 | **Business** 🆕 (`gm-business`) | 3.3 KB | Read a contract, offer or scope document before you sign: every obligation with its date, the risky clauses ranked, the questions to ask and the wording to request. | "review this contract before I sign (paste it)" | — |
 
-Core (always installed): 21 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
+Core (always installed): 25 KB. OpenWolf: ≈3 MB (npm), pinned to 2.5.3.
 <!-- CATALOG:END -->
+
+## Update mode
+
+When the session hook says God Mode was updated, only the new categories need a question. Ask about those alone (one multiSelect question, plus a "Not now" option), install what the user picks, then save `"version"` in `setup.json` (step 6). Skip OpenWolf and the video toolkit unless the user asks for them.
 
 ## Steps
 
 1. **See what's installed.** Run `claude plugin list` and note which `gm-*@god-mode` plugins are already installed and enabled. If the command isn't available, read `installed_plugins.json` in the Claude config folder (`$CLAUDE_CONFIG_DIR` or `~/.claude/plugins/`).
 
-2. **Ask with the AskUserQuestion tool.** Use two questions, each with `multiSelect: true`. Put categories 1–4 in the first question and 5–8 in the second, because a question holds at most 4 options.
+2. **Ask with the AskUserQuestion tool.** Use one question per group of 4 categories (a question holds at most 4 options), each with `multiSelect: true`: categories 1–4, 5–8, then 9–10. Categories marked 🆕 in the catalog are new in this version: keep the 🆕 in their option label.
    - Option **label**: the category name, a middle dot, then its size, e.g. `Career · 9 KB`. Add `✓` at the end if it's already installed.
    - Option **description**: the "What it does for you" text, then `e.g.` and the first "Try saying" example, plus the Extras text when there is one. Keep it practical: what the user types and what they get back.
-   - Question header: `Categories` and `More`. Question text, e.g.: "Which God Mode categories do you want? Pick any number. Sizes are download sizes."
+   - Question header: `Categories`, `More` and `New`. Question text, e.g.: "Which God Mode categories do you want? Pick any number. Sizes are download sizes."
    - Write the questions in the user's language. Keep the plugin ids in English.
    - If AskUserQuestion isn't available, print the catalog as a numbered list with sizes and ask the user to reply with numbers (e.g. `1 3 5`), or `all`.
    - If the user passed category ids as an argument, skip the question and use those.

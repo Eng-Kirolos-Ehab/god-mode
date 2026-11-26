@@ -32,10 +32,33 @@ Skills and agents ship in optional categories (the plugin id is in brackets). If
 | Video/marketing | promo film, trailer, edit my footage, shorts, captions, launch copy | agent `promo-film-maker` (it picks the right video tool) [gm-video] |
 | Dashboards | review an admin, analytics or smart-home dashboard | agent `dashboard-reviewer` [gm-web-design] |
 | Mobile web review | phone-width review of a site or portfolio | agent `mobile-ui-reviewer` [gm-web-design] |
+| Hooks & scripts | hook, opening line, reel/short script, caption, title + cover | skill `hook-writer` [gm-content] |
+| Motion video | animate an approved script, "my video looks generic/AI" | skill `motion-polish` [gm-content] |
+| Contracts | review a contract, offer, SOW, NDA or terms before signing | skill `contract-review` [gm-business] |
 | God Mode itself | add or remove categories, first-run setup | skill `setup` (core) |
 | Many specialists | broad task, "someone handle this" | agent `office-manager` [gm-automation] |
 
 Recommended extras (installed separately; see [EXTERNAL_SKILLS.md](https://github.com/Eng-Kirolos-Ehab/god-mode/blob/main/EXTERNAL_SKILLS.md)): `ui-ux-pro-max` for UI design, `career-ops` for job tracking, Anthropic's `docx`/`xlsx`/`pptx`/`pdf` for office files.
+
+### Skill tree
+
+Find the branch first, then the leaf. 🧩 marks a recommended outside skill (see EXTERNAL_SKILLS.md); everything else ships with God Mode.
+
+```
+God Mode
+├── 1 Think & plan ......... writing-plans → executing-plans · 🧩 idea-refine · 🧩 doubt-driven-development · 🧩 claude-code-setup
+├── 2 Build & quality ...... systematic-debugging · test-driven-development · verification-before-completion
+│                            🧩 replica-* (clone + improve an app) · 🧩 api / performance / observability / ci-cd / shipping (agent-skills)
+├── 3 Security ............. 🧩 SkillSpector (scan before installing any skill) · 🧩 security-and-hardening
+├── 4 Design & web ......... [gm-web-design] clone-website · color-palette-swap · mobile-ui-reviewer · dashboard-reviewer
+│                            design-color-rules (core) · 🧩 ui-ux-pro-max · 🧩 accessibility-engineering
+├── 5 Video & sound ........ [gm-content] hook-writer → motion-polish → [gm-video] promo-film-maker · 🧩 earshot (sound effects)
+├── 6 Writing & reach ...... [gm-seo-writing] humanizer · seo-ai-visibility
+├── 7 Work & business ...... [gm-career] cv-optimizer · job-hunter · accounts-keeper · [gm-business] contract-review
+├── 8 Test & audit ......... [gm-qa-audit] mobile-app-qa · web-auditor
+├── 9 Automate ............. [gm-automation] api-anything · office-manager
+└── 10 Learn & home ........ [gm-study] lecture-summary-pdf · [gm-interior] interior-design-engineer
+```
 
 ### When several skills match
 

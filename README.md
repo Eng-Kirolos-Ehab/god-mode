@@ -85,7 +85,7 @@ Then restart Claude Code. **In your first session, God Mode asks which categorie
 ### Categories
 
 <!-- CATEGORIES:START -->
-The core (21 KB) is always installed. Everything else is optional:
+The core (25 KB) is always installed. Everything else is optional:
 
 | # | Category | Plugin id | Size | What it does for you |
 |---|---|---|---|---|
@@ -97,6 +97,8 @@ The core (21 KB) is always installed. Everything else is optional:
 | 6 | 🤖 **Automation & Agents** | `gm-automation` | 11 KB | Pull data from a website without scraping the page, and hand a big task to a manager agent that splits it across specialists. |
 | 7 | 📚 **Study** | `gm-study` | 6.0 KB | Upload a lecture and get one printable PDF: mind maps, diagrams, exam traps and a question bank with answers. |
 | 8 | 🛋️ **Interior Design** | `gm-interior` | 13 KB | Plan a room from your photos and measurements: layout, furniture, lighting, a bill of quantities and a mood board. |
+| 9 | 🪝 **Content & Hooks** | `gm-content` | 30 KB | Write scroll-stopping hooks, titles and 3-column scripts for reels and shorts, then turn the approved script into a polished motion video with sound effects on the beat. Handles Arabic and other right-to-left text. *Optional: earshot for sound effects (Python, CPU only); a video renderer such as HyperFrames or Remotion.* |
+| 10 | 📑 **Business** | `gm-business` | 3.3 KB | Read a contract, offer or scope document before you sign: every obligation with its date, the risky clauses ranked, the questions to ask and the wording to request. |
 <!-- CATEGORIES:END -->
 
 You can also install a category directly: `/plugin install gm-career@god-mode`.
@@ -116,6 +118,15 @@ Skip the menu with `--categories gm-career,gm-video` / `-Categories gm-career,gm
 **What it runs on your machine:** the plugins are Markdown instructions and a few small Python helper scripts, with no MCP servers and no access to any account. The core adds **one session-start hook** ([`session-start.sh`](plugins/god-mode/hooks/session-start.sh)). It only prints a note for Claude: "setup pending", or "OpenWolf not set up in this git project". It downloads and changes nothing by itself. During setup, Claude runs `claude plugin install` for the categories you pick and `npx openwolf@2.5.3 init --agent claude` (pinned version; it keeps your existing CLAUDE.md and settings). Uninstall any time with `/plugin uninstall god-mode` and the `gm-*` plugins.
 
 ---
+
+## 🔄 Update
+
+```bash
+claude plugin marketplace update god-mode
+claude plugin update god-mode@god-mode
+```
+
+Restart Claude Code (or run `/reload-plugins`). Your next session shows a one-time **what's new** note and offers any new categories, and you pick which ones to add.
 
 ## 🇪🇬 بالعربي
 
@@ -164,7 +175,7 @@ irm https://raw.githubusercontent.com/Eng-Kirolos-Ehab/god-mode/main/get.ps1 | i
 | 💰 | **Token protocol** | Index-first reading, no repeated reads, targeted search. About 64% fewer tokens in our own work, by OpenWolf's estimate. |
 | 🧠 | **Learning loop** | Corrections become rules and fixed bugs go to a log, so mistakes aren't repeated. |
 | 🛡️ | **Safety lines** | No deletes without written OK, messages stay drafts, no live side effects while testing, backup before production writes. |
-| 🧩 | **Pick what you need** | 8 optional categories with sizes. First-run picker, change any time with `/god-mode:setup`. |
+| 🧩 | **Pick what you need** | 10 optional categories with sizes. After an update you get a one-time "what's new" note and can add the new ones. First-run picker, change any time with `/god-mode:setup`. |
 | 🤖 | **9 specialist agents** | Mobile QA, web auditor, SEO + AI visibility, promo films, job hunter, accounts keeper, two reviewers, office manager. |
 | 🎨 | **Design rules** | Color harmonies, 60-30-10, OKLCH shade scales, WCAG contrast ([design-color-rules.md](plugins/god-mode/skills/god-mode/rules/design-color-rules.md)). |
 | 🌍 | **Arabic + English** | Skills and triggers work in both languages. |
@@ -282,12 +293,17 @@ mindmap
       lecture-summary-pdf
     Interior Design
       interior-design-engineer
+    Content & Hooks
+      hook-writer
+      motion-polish
+    Business
+      contract-review
 ```
 
 
 
 <details open>
-<summary><b>🧭 Core (always installed) · 21 KB</b></summary>
+<summary><b>🧭 Core (always installed) · 25 KB</b></summary>
 
 | Name | Type | Say something like | You get | It asks you for |
 |---|---|---|---|---|
@@ -384,6 +400,27 @@ Plan a room from your photos and measurements: layout, furniture, lighting, a bi
 |---|---|---|---|---|
 | [interior-design-engineer](plugins/gm-interior/skills/interior-design-engineer) | skill | "design my living room 4×5 m (attach photos)" | Layout options, furniture and lighting plan, BOQ, and a mood board | room photos and measurements, inspiration images, budget and style |
 </details>
+
+<details>
+<summary><b>🪝 Content & Hooks · 30 KB</b> (<code>gm-content</code>)</summary>
+
+Write scroll-stopping hooks, titles and 3-column scripts for reels and shorts, then turn the approved script into a polished motion video with sound effects on the beat. Handles Arabic and other right-to-left text.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [hook-writer](plugins/gm-content/skills/hook-writer) | skill | "write 5 hooks and a 20-second reel script for my app" | The 2 best hooks with scores, a title + cover brief, and a script table (words | on screen | sound) | the product facts, platform, length, language, and your brand voice once |
+| [motion-polish](plugins/gm-content/skills/motion-polish) | skill | "animate this approved script as a 9:16 reel" | A rendered MP4 with a style preset, beat-synced cuts, sound effects, and a self-review contact sheet | the approved script, format, brand color, logo and real screenshots |
+</details>
+
+<details>
+<summary><b>📑 Business · 3.3 KB</b> (<code>gm-business</code>)</summary>
+
+Read a contract, offer or scope document before you sign: every obligation with its date, the risky clauses ranked, the questions to ask and the wording to request.
+
+| Name | Type | Say something like | You get | It asks you for |
+|---|---|---|---|---|
+| [contract-review](plugins/gm-business/skills/contract-review) | skill | "review this contract before I sign (paste it)" | Obligations table, risky clauses with safer wording, missing clauses, questions, and a sign / change / don't-sign verdict | which side you are on and what was agreed verbally |
+</details>
 <!-- SKILLMAP:END -->
 
 ---
@@ -392,10 +429,10 @@ Plan a room from your photos and measurements: layout, furniture, lighting, a bi
 
 ```
 god-mode/
-├── .claude-plugin/marketplace.json   # lists the core + 8 categories
+├── .claude-plugin/marketplace.json   # lists the core + 10 categories
 ├── plugins/
 │   ├── god-mode/            # core: router (SKILL.md + rules/), setup, session hook
-│   └── gm-*/                # 8 optional categories (skills + agents)
+│   └── gm-*/                # 10 optional categories (skills + agents)
 ├── categories.json          # category names and descriptions (source of truth)
 ├── catalog.generated.*      # sizes and contents, built by tools/build_catalog.py
 ├── tools/                   # build_catalog.py, token_stats.py

@@ -60,6 +60,10 @@ def main() -> None:
     core = ROOT / CORE_DIR
     core_size = size_of([core / "skills", core / "hooks"])
     (core / "openwolf.version").write_text(cfg["openwolf"]["version"] + chr(10), encoding="utf-8", newline=chr(10))
+    # whats-new.txt: read by the session hook after an update. Line 1 = version, line 2 = new category ids, then notes.
+    fresh = [c["id"] for c in cfg["categories"] if c.get("new_in") == version]
+    notes = [version, " ".join(fresh)] + [f"- {n}" for n in cfg.get("whats_new", [])]
+    (core / "whats-new.txt").write_text(chr(10).join(notes) + chr(10), encoding="utf-8", newline=chr(10))
     cats = []
     for c in cfg["categories"]:
         d = ROOT / "plugins" / c["id"]
@@ -127,7 +131,8 @@ def main() -> None:
         "marketplace": market,
         "core": {"bytes": core_size, "size": human(core_size)},
         "openwolf": cfg["openwolf"],
-        "categories": [{k: c[k] for k in ("id", "name", "emoji", "description", "extras", "skills", "agents", "items", "bytes", "size")} for c in cats],
+        "whats_new": cfg.get("whats_new", []),
+        "categories": [{**{k: c[k] for k in ("id", "name", "emoji", "description", "extras", "skills", "agents", "items", "bytes", "size")}, "new_in": c.get("new_in")} for c in cats],
     })
 
     # Plain TSV for install.sh (no JSON parser needed). Line 1 = meta, then one line per category.
@@ -139,7 +144,8 @@ def main() -> None:
     rows = ["| # | Category (plugin id) | Size | What it does for you | Try saying | Extras |", "|---|---|---|---|---|---|"]
     for i, c in enumerate(cats, 1):
         tries = " · ".join(f"\"{it['say']}\"" for it in c["items"][:2])
-        rows.append(f"| {i} | **{c['name']}** (`{c['id']}`) | {c['size']} | {c['description']} | {tries} | {c['extras'] or '—'} |")
+        new = " 🆕" if c.get("new_in") == version else ""
+        rows.append(f"| {i} | **{c['name']}**{new} (`{c['id']}`) | {c['size']} | {c['description']} | {tries} | {c['extras'] or '—'} |")
     table = "\n".join(rows) + f"\n\nCore (always installed): {human(core_size)}. OpenWolf: {cfg['openwolf']['approx_download']}, pinned to {cfg['openwolf']['version']}."
     setup = core / "skills" / "setup" / "SKILL.md"
     text = setup.read_text(encoding="utf-8")

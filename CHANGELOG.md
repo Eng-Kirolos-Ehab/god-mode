@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.2.0
+- **What's new note.** After you update God Mode, your next session tells you once what changed and offers the new categories (multi-select, "Not now" allowed). It installs nothing without your pick. The note is driven by `whats-new.txt`, which `tools/build_catalog.py` generates from `categories.json` (`whats_new`, `new_in`).
+- **New category: Content & Hooks (`gm-content`).**
+  - `hook-writer`: 5 hooks scored with `hookscore.py` (from youtube-agent-skill, MIT), a title + cover pairing, and a 3-column script (words | on screen | sound) in your saved brand voice.
+  - `motion-polish`: style presets, spring easing, targeted motion blur, cuts on the beat, right-to-left text rules, a sound pass with earshot, and a self-review contact sheet.
+- **New category: Business (`gm-business`).** `contract-review` lists obligations with their dates, ranks the risky clauses with safer wording, and gives a sign / change / don't-sign verdict. It's a practical review, not legal advice.
+- **Skill tree** in the router: 10 branches, from the task you have to the skill that does it.
+- **Safety gate** for outside skills in EXTERNAL_SKILLS.md: backup, pinned copy, an offline scan with NVIDIA SkillSpector, reading where each finding is, an overlap check, and the narrowest scope. Plus a vetted list: earshot, replica-skill, claude-code-setup, 11 picks from agent-skills, and Ponytail (optional, with its hooks explained).
+- Setup asks in groups of 4 (now 10 categories) and marks new categories 🆕.
+
 ## 2.1.0
 - Router: a tie-break order and a lead-skill table for when several installed skills match the same request.
 - EXTERNAL_SKILLS: engineering skills that work well with the router, and how to add them without extra hooks.

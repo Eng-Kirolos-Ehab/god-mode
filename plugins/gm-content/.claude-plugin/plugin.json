@@ -1,0 +1,12 @@
+{
+  "name": "gm-content",
+  "version": "2.2.0",
+  "description": "God Mode · Content & Hooks: Write scroll-stopping hooks, titles and 3-column scripts for reels and shorts, then turn the approved script into a polished motion video with sound effects on the beat. Handles Arabic and other right-to-left text.",
+  "author": {
+    "name": "Kirolos Ehab",
+    "url": "https://github.com/Eng-Kirolos-Ehab"
+  },
+  "homepage": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "repository": "https://github.com/Eng-Kirolos-Ehab/god-mode",
+  "license": "MIT"
+}
